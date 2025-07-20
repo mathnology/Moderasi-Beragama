@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="id"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderasi Beragama - Aplikasi Pembelajaran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .icon-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .card-hover:hover .icon-container::before {
+            animation: shimmer 1.5s ease-in-out;
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .card-hover:hover .floating-icon {
+            animation: bounce 0.6s ease-in-out;
+        }
+        
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: inherit;
+            opacity: 0;
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+        
+        .card-hover:hover .pulse-ring {
+            animation: pulse-ring-hover 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        }
+        
+        .glow-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .card-hover:hover .glow-effect {
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .card-hover:nth-child(2):hover .glow-effect {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+        
+        .card-hover:nth-child(3):hover .glow-effect {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        }
+        
+        .card-hover:nth-child(4):hover .glow-effect {
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-3px) rotate(1deg); }
+            50% { transform: translateY(-6px) rotate(0deg); }
+            75% { transform: translateY(-3px) rotate(-1deg); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(1.15) rotate(0deg); }
+            75% { transform: scale(1.1) rotate(-5deg); }
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+        }
+        
+        @keyframes pulse-ring-hover {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+        }
+        
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-option:hover {
+            background-color: #f3f4f6;
+            border-color: #16a34a;
+        }
+        
+        .quiz-option.selected {
+            background-color: #f0fdf4;
+            border-color: #16a34a;
+            color: #16a34a;
+        }
+        
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #16a34a;
+            color: #16a34a;
+        }
+        
+        .quiz-option.incorrect {
+            background-color: #fef2f2;
+            border-color: #dc2626;
+            color: #dc2626;
+        }
+        
+        .animated-title {
+            background: linear-gradient(45deg, #10b981, #3b82f6, #f59e0b, #ef4444, #8b5cf6, #10b981);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate;
+            position: relative;
+        }
+        
+        .animated-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes textGlow {
+            0% { 
+                filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.5));
+                transform: scale(1);
+            }
+            100% { 
+                filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8));
+                transform: scale(1.02);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.inset-2{inset:0.5rem}.-bottom-4{bottom:-1rem}.-left-4{left:-1rem}.-left-6{left:-1.5rem}.-right-4{right:-1rem}.-right-6{right:-1.5rem}.-top-4{top:-1rem}.bottom-1\/4{bottom:25%}.top-1\/4{top:25%}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-8{margin-top:2rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-20{height:5rem}.h-24{height:6rem}.h-3{height:0.75rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-80{height:20rem}.h-full{height:100%}.w-10{width:2.5rem}.w-16{width:4rem}.w-20{width:5rem}.w-3{width:0.75rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-80{width:20rem}.w-96{width:24rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-md{max-width:28rem}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes bounce{0%, 100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(0.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,0.2,1)}}.animate-bounce{animation:bounce 1s infinite}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-4{gap:1rem}.gap-8{gap:2rem}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-t{border-top-width:1px}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.border-green-200{--tw-border-opacity:1;border-color:rgb(187 247 208 / var(--tw-border-opacity, 1))}.border-indigo-100{--tw-border-opacity:1;border-color:rgb(224 231 255 / var(--tw-border-opacity, 1))}.border-yellow-300{--tw-border-opacity:1;border-color:rgb(253 224 71 / var(--tw-border-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-blue-400{--tw-bg-opacity:1;background-color:rgb(96 165 250 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128 / var(--tw-bg-opacity, 1))}.bg-green-50{--tw-bg-opacity:1;background-color:rgb(240 253 244 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-green-600{--tw-bg-opacity:1;background-color:rgb(22 163 74 / var(--tw-bg-opacity, 1))}.bg-purple-400{--tw-bg-opacity:1;background-color:rgb(192 132 252 / var(--tw-bg-opacity, 1))}.bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255 / var(--tw-bg-opacity, 1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-teal-50{--tw-bg-opacity:1;background-color:rgb(240 253 250 / var(--tw-bg-opacity, 1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-yellow-400{--tw-bg-opacity:1;background-color:rgb(250 204 21 / var(--tw-bg-opacity, 1))}.bg-yellow-500{--tw-bg-opacity:1;background-color:rgb(234 179 8 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-100{--tw-gradient-from:#dcfce7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(220 252 231 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-500{--tw-gradient-from:#22c55e var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 197 94 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-600{--tw-gradient-from:#16a34a var(--tw-gradient-from-position);--tw-gradient-to:rgb(22 163 74 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-indigo-50{--tw-gradient-from:#eef2ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(238 242 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-indigo-500{--tw-gradient-from:#6366f1 var(--tw-gradient-from-position);--tw-gradient-to:rgb(99 102 241 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-500{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-teal-500{--tw-gradient-from:#14b8a6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(20 184 166 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-white\/10{--tw-gradient-to:rgb(255 255 255 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(255 255 255 / 0.1) var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-yellow-50{--tw-gradient-to:rgb(254 252 232 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fefce8 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-blue-100{--tw-gradient-to:#dbeafe var(--tw-gradient-to-position)}.to-blue-600{--tw-gradient-to:#2563eb var(--tw-gradient-to-position)}.to-cyan-600{--tw-gradient-to:#0891b2 var(--tw-gradient-to-position)}.to-emerald-600{--tw-gradient-to:#059669 var(--tw-gradient-to-position)}.to-purple-50{--tw-gradient-to:#faf5ff var(--tw-gradient-to-position)}.to-purple-600{--tw-gradient-to:#9333ea var(--tw-gradient-to-position)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.to-violet-600{--tw-gradient-to:#7c3aed var(--tw-gradient-to-position)}.to-yellow-500{--tw-gradient-to:#eab308 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-6{padding-top:1.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.tracking-wide{letter-spacing:0.025em}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-90{opacity:0.9}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.brightness-110{--tw-brightness:brightness(1.1);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-blue-200:hover{--tw-border-opacity:1;border-color:rgb(191 219 254 / var(--tw-border-opacity, 1))}.hover\:border-green-200:hover{--tw-border-opacity:1;border-color:rgb(187 247 208 / var(--tw-border-opacity, 1))}.hover\:border-purple-200:hover{--tw-border-opacity:1;border-color:rgb(233 213 255 / var(--tw-border-opacity, 1))}.hover\:border-teal-200:hover{--tw-border-opacity:1;border-color:rgb(153 246 228 / var(--tw-border-opacity, 1))}.hover\:bg-blue-100:hover{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-300:hover{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.hover\:bg-green-100:hover{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.hover\:bg-green-700:hover{--tw-bg-opacity:1;background-color:rgb(21 128 61 / var(--tw-bg-opacity, 1))}.hover\:bg-yellow-600:hover{--tw-bg-opacity:1;background-color:rgb(202 138 4 / var(--tw-bg-opacity, 1))}.hover\:text-blue-700:hover{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.hover\:text-gray-800:hover{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.hover\:text-green-700:hover{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.hover\:text-yellow-200:hover{--tw-text-opacity:1;color:rgb(254 240 138 / var(--tw-text-opacity, 1))}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-teal-100{--tw-bg-opacity:1;background-color:rgb(204 251 241 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:flex-row{flex-direction:row}}@media (min-width: 768px){.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:p-8{padding:2rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}}</style></head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-green-600 to-yellow-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-96 h-24 bg-white rounded-lg flex items-center justify-center p-2 cursor-pointer hover:shadow-lg transition-shadow" onclick="showWelcome()">
+                        <img src="https://raw.githubusercontent.com/mathnology/Moderasi-Beragama/refs/heads/main/logo%20atas%20final.png" alt="Logo Kemenag RI" class="w-full h-full object-contain">
+                    </div>
+                    <h1 class="text-2xl font-bold cursor-pointer hover:text-yellow-200 transition-all duration-300 transform hover:scale-105 text-shadow-lg" onclick="showWelcome()" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); letter-spacing: 1px;">Moderasi Beragama</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <span class="text-sm opacity-90"> </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Welcome Section -->
+        <div id="welcome-section" class="text-center mb-12">
+            <!-- Welcome Hero Illustration -->
+            <div class="mb-8">
+                <div class="relative w-80 h-80 mx-auto mb-6">
+                    <!-- Animated rings around image -->
+                    <div class="absolute inset-0 rounded-full border-4 border-green-200 animate-pulse"></div>
+                    <div class="absolute inset-2 rounded-full border-2 border-yellow-300 animate-ping" style="animation-duration: 3s;"></div>
+                    
+                    <!-- Main image container with gradient background -->
+                    <div class="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-green-100 via-yellow-50 to-blue-100 rounded-full shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500">
+                        <!-- Subtle overlay pattern -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
+                        
+                        <!-- Image with enhanced styling -->
+                        <img src="https://raw.githubusercontent.com/mathnology/Moderasi-Beragama/refs/heads/main/ARISTA%20WIBOWO%20BULET.png" alt="Moderasi Beragama untuk Semua" class="w-full h-full object-cover relative z-10 filter brightness-110 contrast-105">
+                        
+                        <!-- Subtle inner shadow -->
+                        <div class="absolute inset-0 rounded-full shadow-inner"></div>
+                    </div>
+                    
+                    <!-- Decorative elements around the image -->
+                    <div class="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full shadow-lg animate-bounce" style="animation-delay: 0.5s;"></div>
+                    <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-green-400 rounded-full shadow-lg animate-bounce" style="animation-delay: 1s;"></div>
+                    <div class="absolute top-1/4 -left-6 w-4 h-4 bg-blue-400 rounded-full shadow-lg animate-bounce" style="animation-delay: 1.5s;"></div>
+                    <div class="absolute bottom-1/4 -right-6 w-5 h-5 bg-purple-400 rounded-full shadow-lg animate-bounce" style="animation-delay: 2s;"></div>
+                </div>
+                
+                <!-- Developer Information -->
+                <div class="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto mb-6">
+                    <div class="text-center">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Dikembangkan oleh:</h3>
+                        <p class="text-xl font-bold text-green-600 mb-1">Arista Wibowo, M.Pd.</p>
+                        <p class="text-gray-600 text-sm mb-1">Dosen UINSI Samarinda</p>
+                        <p class="text-gray-500 text-sm">Peserta PKDP 2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 tracking-wide transform transition-all duration-500 hover:scale-105" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.1); letter-spacing: 1px;">
+                Selamat Datang di Pembelajaran<br>
+                <span class="bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent font-extrabold" style="letter-spacing: 2px;">MODERASI BERAGAMA</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+                Pelajari nilai-nilai toleransi, kerukunan, dan moderasi dalam beragama melalui modul interaktif yang mudah dipahami
+            </p>
+            <button onclick="showMainMenu()" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+                Mulai Belajar
+            </button>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="hidden">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Menu Pembelajaran</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+                    Pilih menu pembelajaran yang ingin Anda pelajari untuk memahami konsep moderasi beragama secara mendalam
+                </p>
+                <button onclick="showWelcome()" class="inline-flex items-center text-green-600 hover:text-green-700 bg-green-50 hover:bg-green-100 px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Kembali ke Halaman Awal
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                <!-- Modul Pembelajaran -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-8 cursor-pointer group border border-gray-100 hover:border-blue-200" onclick="showModule('teori')">
+                    <div class="icon-container w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl flex items-center justify-center mb-6 mx-auto relative">
+                        <div class="pulse-ring"></div>
+                        <div class="glow-effect"></div>
+                        <svg class="floating-icon w-10 h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">Modul Pembelajaran</h3>
+                        <p class="text-gray-600 mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Pelajari konsep dasar moderasi beragama dan nilai-nilai toleransi melalui 5 bab pembelajaran yang komprehensif</p>
+                        <div class="inline-flex items-center bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm font-medium group-hover:bg-blue-100 transition-colors duration-300">
+                            <span>5 Bab Tersedia</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kuis Interaktif -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-8 cursor-pointer group border border-gray-100 hover:border-green-200" onclick="showQuiz()">
+                    <div class="icon-container w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center mb-6 mx-auto relative">
+                        <div class="pulse-ring"></div>
+                        <div class="glow-effect"></div>
+                        <svg class="floating-icon w-10 h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.5s;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors duration-300">Kuis Interaktif</h3>
+                        <p class="text-gray-600 mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Uji pemahaman Anda dengan kuis yang menarik dan edukatif untuk mengukur penguasaan materi</p>
+                        <div class="inline-flex items-center bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-medium group-hover:bg-green-100 transition-colors duration-300">
+                            <span>5 Pertanyaan</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Studi Kasus -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-8 cursor-pointer group border border-gray-100 hover:border-purple-200" onclick="showCaseStudy()">
+                    <div class="icon-container w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-3xl flex items-center justify-center mb-6 mx-auto relative">
+                        <div class="pulse-ring"></div>
+                        <div class="glow-effect"></div>
+                        <svg class="floating-icon w-10 h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 1s;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-purple-600 transition-colors duration-300">Studi Kasus</h3>
+                        <p class="text-gray-600 mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Analisis kasus nyata penerapan moderasi beragama di masyarakat Indonesia</p>
+                        <div class="inline-flex items-center bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-medium group-hover:bg-purple-100 transition-colors duration-300">
+                            <span>3 Kasus Tersedia</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Referensi -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-8 cursor-pointer group border border-gray-100 hover:border-teal-200" onclick="showReferences()">
+                    <div class="icon-container w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-3xl flex items-center justify-center mb-6 mx-auto relative">
+                        <div class="pulse-ring"></div>
+                        <div class="glow-effect"></div>
+                        <svg class="floating-icon w-10 h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 1.5s;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-teal-600 transition-colors duration-300">Referensi</h3>
+                        <p class="text-gray-600 mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Daftar pustaka dan sumber referensi terpercaya tentang moderasi beragama</p>
+                        <div class="inline-flex items-center bg-teal-50 text-teal-600 px-4 py-2 rounded-full text-sm font-medium group-hover:bg-teal-100 transition-colors duration-300">
+                            <span>25+ Referensi</span>
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Tips -->
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl shadow-lg p-8 max-w-4xl mx-auto border border-indigo-100">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Tips Pembelajaran</h3>
+                    <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                        Untuk hasil pembelajaran yang optimal, disarankan untuk mengikuti urutan: Modul Pembelajaran → Kuis Interaktif → Studi Kasus → Referensi
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
+                            <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+                            <span class="text-sm text-gray-700">Mulai dari Modul</span>
+                        </div>
+                        <div class="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
+                            <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                            <span class="text-sm text-gray-700">Uji dengan Kuis</span>
+                        </div>
+                        <div class="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
+                            <span class="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
+                            <span class="text-sm text-gray-700">Analisis Kasus</span>
+                        </div>
+                        <div class="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
+                            <span class="w-3 h-3 bg-teal-500 rounded-full mr-2"></span>
+                            <span class="text-sm text-gray-700">Pelajari Referensi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module Content -->
+        <div id="module-content" class="hidden">
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <button onclick="showMainMenu()" class="flex items-center text-green-600 hover:text-green-700">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Kembali
+                    </button>
+                    <div class="text-sm text-gray-500">Bab <span id="module-number">1</span> dari 5</div>
+                </div>
+
+                <div id="module-content-body">
+                    <!-- Content will be dynamically loaded -->
+                </div>
+
+                <div class="flex justify-between items-center mt-8 pt-6 border-t">
+                    <button id="prev-module" class="px-6 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+                        ← Sebelumnya
+                    </button>
+                    <button id="next-module" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-colors">
+                        Selanjutnya →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study Section -->
+        <div id="case-study-section" class="hidden">
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <button onclick="showMainMenu()" class="flex items-center text-green-600 hover:text-green-700">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Kembali
+                    </button>
+                    <div class="text-sm text-gray-500">Kasus <span id="case-number">1</span> dari 3</div>
+                </div>
+
+                <div id="case-study-content">
+                    <!-- Content will be dynamically loaded -->
+                </div>
+
+                <div class="flex justify-between items-center mt-8 pt-6 border-t">
+                    <button id="prev-case" class="px-6 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+                        ← Kasus Sebelumnya
+                    </button>
+                    <button id="next-case" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg transition-colors">
+                        Kasus Selanjutnya →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz-section" class="hidden">
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <button onclick="showMainMenu()" class="flex items-center text-green-600 hover:text-green-700">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Kembali
+                    </button>
+                    <div class="text-sm text-gray-500">Pertanyaan <span id="question-number">1</span> dari 5</div>
+                </div>
+
+                <div class="mb-6">
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="quiz-progress" class="progress-bar bg-green-600 h-2 rounded-full" style="width: 20%"></div>
+                    </div>
+                </div>
+
+                <div id="quiz-content">
+                    <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-6">
+                        Apa yang dimaksud dengan prinsip "Tawassuth" dalam moderasi beragama?
+                    </h2>
+
+                    <div class="space-y-3 mb-8">
+                        <div class="quiz-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer" onclick="selectOption(this, false)">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 border-2 border-gray-300 rounded-full mr-3 flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-green-600 rounded-full hidden"></div>
+                                </div>
+                                <span>Sikap yang keras dan tegas dalam beragama</span>
+                            </div>
+                        </div>
+
+                        <div class="quiz-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer" onclick="selectOption(this, true)">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 border-2 border-gray-300 rounded-full mr-3 flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-green-600 rounded-full hidden"></div>
+                                </div>
+                                <span>Sikap tengah-tengah dan seimbang dalam beragama</span>
+                            </div>
+                        </div>
+
+                        <div class="quiz-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer" onclick="selectOption(this, false)">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 border-2 border-gray-300 rounded-full mr-3 flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-green-600 rounded-full hidden"></div>
+                                </div>
+                                <span>Sikap yang longgar dalam menjalankan agama</span>
+                            </div>
+                        </div>
+
+                        <div class="quiz-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer" onclick="selectOption(this, false)">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 border-2 border-gray-300 rounded-full mr-3 flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-green-600 rounded-full hidden"></div>
+                                </div>
+                                <span>Sikap yang tidak peduli terhadap agama</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden mb-6 p-4 rounded-lg">
+                        <p class="font-medium mb-2"></p>
+                        <p class="text-sm"></p>
+                    </div>
+
+                    <button id="next-question" onclick="nextQuestion()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-colors hidden">
+                        Pertanyaan Selanjutnya
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Results -->
+        <div id="quiz-results" class="hidden">
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8 text-center">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="text-3xl">🎉</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Selamat!</h2>
+                <p class="text-lg text-gray-600 mb-6">Anda telah menyelesaikan kuis dengan baik</p>
+                
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                    <div class="text-4xl font-bold text-green-600 mb-2" id="final-score">4/5</div>
+                    <p class="text-gray-600">Jawaban Benar</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="restartQuiz()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition-colors">
+                        Ulangi Kuis
+                    </button>
+                    <button onclick="showMainMenu()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded-lg transition-colors">
+                        Kembali ke Menu
+                    </button>
+                    <button onclick="showWelcome()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors">
+                        Halaman Awal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- References Section -->
+        <div id="references-section" class="hidden">
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <button onclick="showMainMenu()" class="flex items-center text-green-600 hover:text-green-700">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Kembali
+                    </button>
+                    <button onclick="showWelcome()" class="flex items-center text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-lg transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        Halaman Awal
+                    </button>
+                </div>
+
+                <div id="references-content">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <h3 class="text-xl font-semibold tracking-wide animated-title" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5); letter-spacing: 2px;">MODERASI BERAGAMA</h3>
+            </div>
+            <p class="text-gray-400 mb-4">Membangun toleransi dan kerukunan dalam keberagaman</p>
+            <div class="flex justify-center space-x-6 text-sm text-gray-400 mb-6">
+                <span>Arista Wibowo, M.Pd</span>
+                <span>•</span>
+                <span>©2025 Mathnology</span>
+            </div>
+            
+            
+
+
+    <script>
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+        let currentModuleIndex = 0;
+        let currentCaseIndex = 0;
+
+        const questions = [
+            {
+                question: "Apa yang dimaksud dengan prinsip 'Tawassuth' dalam moderasi beragama?",
+                options: [
+                    "Sikap yang keras dan tegas dalam beragama",
+                    "Sikap tengah-tengah dan seimbang dalam beragama",
+                    "Sikap yang longgar dalam menjalankan agama",
+                    "Sikap yang tidak peduli terhadap agama"
+                ],
+                correct: 1,
+                explanation: "Tawassuth berarti sikap tengah-tengah atau seimbang, tidak berlebihan ke kiri maupun ke kanan dalam menjalankan ajaran agama."
+            },
+            {
+                question: "Manakah yang merupakan contoh penerapan toleransi beragama?",
+                options: [
+                    "Melarang pemeluk agama lain beribadah",
+                    "Menghormati perbedaan keyakinan dan memberikan ruang beribadah",
+                    "Memaksakan keyakinan kepada orang lain",
+                    "Mengabaikan keberadaan agama lain"
+                ],
+                correct: 1,
+                explanation: "Toleransi beragama berarti menghormati dan memberikan ruang bagi pemeluk agama lain untuk menjalankan keyakinannya."
+            },
+            {
+                question: "Apa tujuan utama dari moderasi beragama?",
+                options: [
+                    "Menyeragamkan semua agama",
+                    "Menciptakan kerukunan dan perdamaian dalam keberagaman",
+                    "Menghilangkan perbedaan agama",
+                    "Membuat agama menjadi tidak penting"
+                ],
+                correct: 1,
+                explanation: "Moderasi beragama bertujuan menciptakan kerukunan dan perdamaian dalam masyarakat yang beragam tanpa menghilangkan identitas agama masing-masing."
+            },
+            {
+                question: "Prinsip 'Tasamuh' dalam moderasi beragama berarti:",
+                options: [
+                    "Bersikap keras terhadap perbedaan",
+                    "Toleran dan menghargai perbedaan",
+                    "Acuh tak acuh terhadap agama lain",
+                    "Mencampuradukkan ajaran agama"
+                ],
+                correct: 1,
+                explanation: "Tasamuh berarti toleran, yaitu sikap menghargai dan menghormati perbedaan keyakinan dengan tetap teguh pada keyakinan sendiri."
+            },
+            {
+                question: "Bagaimana cara terbaik menerapkan moderasi beragama dalam kehidupan sehari-hari?",
+                options: [
+                    "Menghindari diskusi tentang agama",
+                    "Berdialog dengan saling menghormati dan mencari kesamaan",
+                    "Memaksakan pandangan agama sendiri",
+                    "Tidak peduli dengan agama sama sekali"
+                ],
+                correct: 1,
+                explanation: "Moderasi beragama diterapkan melalui dialog yang saling menghormati, mencari kesamaan nilai, dan bekerja sama untuk kebaikan bersama."
+            }
+        ];
+
+        const modules = [
+            {
+                title: "Pengertian Moderasi Beragama",
+                content: `
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Pengertian Moderasi Beragama</h2>
+                    
+                    <div class="prose max-w-none">
+                        <!-- Hero Image for Module 1 -->
+                        <div class="mb-6 text-center">
+                            <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="#f0f9ff"/>
+                                
+                                <!-- Diverse people holding hands in circle -->
+                                <circle cx="200" cy="150" r="80" stroke="#3b82f6" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+                                
+                                <!-- People figures -->
+                                <g transform="translate(200,70)">
+                                    <circle cx="0" cy="0" r="12" fill="#fbbf24"/>
+                                    <rect x="-8" y="12" width="16" height="20" rx="2" fill="#3b82f6"/>
+                                </g>
+                                
+                                <g transform="translate(256,110)">
+                                    <circle cx="0" cy="0" r="12" fill="#f87171"/>
+                                    <rect x="-8" y="12" width="16" height="20" rx="2" fill="#10b981"/>
+                                </g>
+                                
+                                <g transform="translate(256,190)">
+                                    <circle cx="0" cy="0" r="12" fill="#a78bfa"/>
+                                    <rect x="-8" y="12" width="16" height="20" rx="2" fill="#f59e0b"/>
+                                </g>
+                                
+                                <g transform="translate(200,230)">
+                                    <circle cx="0" cy="0" r="12" fill="#34d399"/>
+                                    <rect x="-8" y="12" width="16" height="20" rx="2" fill="#ef4444"/>
+                                </g>
+                                
+                                <g transform="translate(144,190)">
+                                    <circle cx="0" cy="0" r="12" fill="#fb7185"/>
+                                    <rect x="-8" y="12" width="16" height="20" rx="2" fill="#8b5cf6"/>
+                                </g>
+                                
+                                <g transform="translate(144,110)">
+                                    <circle cx="0" cy="0" r="12" fill="#60a5fa"/>
+                                    <rect x="-8" y="12" width="16" height="20" rx="2" fill="#f97316"/>
+                                </g>
+                                
+                                <!-- Center symbol -->
+                                <circle cx="200" cy="150" r="25" fill="#ffffff" stroke="#6366f1" stroke-width="2"/>
+                                <text x="200" y="158" text-anchor="middle" font-size="20" fill="#6366f1">🕊️</text>
+                                
+                                <!-- Title -->
+                                <text x="200" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">Moderasi Beragama</text>
+                                <text x="200" y="280" text-anchor="middle" font-size="14" fill="#6b7280">Keberagaman dalam Keharmonisan</text>
+                            </svg>
+                        </div>
+
+                        <p class="text-lg text-gray-700 mb-6">
+                            Moderasi beragama adalah cara pandang, sikap, dan praktik beragama dalam kehidupan bersama dengan cara mengejawantahkan esensi ajaran agama yang melindungi martabat kemanusiaan dan membangun kemaslahatan umum.
+                        </p>
+
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                            <h4 class="font-semibold text-blue-800 mb-2">Prinsip Utama Moderasi Beragama:</h4>
+                            <ul class="list-disc list-inside text-blue-700 space-y-1">
+                                <li>Tawassuth (Tengah-tengah/Seimbang)</li>
+                                <li>Tawazun (Berkeseimbangan)</li>
+                                <li>I'tidal (Adil)</li>
+                                <li>Tasamuh (Toleran)</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Mengapa Moderasi Beragama Penting?</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-800 mb-2">🤝 Kerukunan Sosial</h4>
+                                <p class="text-green-700 text-sm">Menciptakan harmoni antar umat beragama dalam masyarakat yang beragam</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-yellow-800 mb-2">🏛️ Persatuan Bangsa</h4>
+                                <p class="text-yellow-700 text-sm">Memperkuat persatuan dan kesatuan dalam keberagaman</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-800 mb-2">☮️ Perdamaian</h4>
+                                <p class="text-purple-700 text-sm">Mencegah konflik dan ekstremisme berbasis agama</p>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-red-800 mb-2">🌍 Kemajuan Peradaban</h4>
+                                <p class="text-red-700 text-sm">Mendorong kemajuan dalam suasana damai dan toleran</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Toleransi dalam Kehidupan Beragama",
+                content: `
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Toleransi dalam Kehidupan Beragama</h2>
+                    
+                    <div class="prose max-w-none">
+                        <!-- Tolerance Illustration -->
+                        <div class="mb-6 text-center">
+                            <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="#f0fdf4"/>
+                                
+                                <!-- Different religious buildings -->
+                                <!-- Mosque -->
+                                <g transform="translate(80,120)">
+                                    <rect x="0" y="20" width="40" height="30" fill="#10b981" rx="2"/>
+                                    <circle cx="20" cy="10" r="8" fill="#10b981"/>
+                                    <rect x="18" y="2" width="4" height="16" fill="#10b981"/>
+                                    <text x="20" y="60" text-anchor="middle" font-size="10" fill="#065f46">Masjid</text>
+                                </g>
+                                
+                                <!-- Church -->
+                                <g transform="translate(160,120)">
+                                    <rect x="0" y="20" width="40" height="30" fill="#3b82f6" rx="2"/>
+                                    <polygon points="20,5 10,20 30,20" fill="#3b82f6"/>
+                                    <rect x="18" y="5" width="4" height="15" fill="#3b82f6"/>
+                                    <rect x="15" y="8" width="10" height="3" fill="#3b82f6"/>
+                                    <text x="20" y="60" text-anchor="middle" font-size="10" fill="#1e40af">Gereja</text>
+                                </g>
+                                
+                                <!-- Temple -->
+                                <g transform="translate(240,120)">
+                                    <rect x="0" y="25" width="40" height="25" fill="#f59e0b" rx="2"/>
+                                    <polygon points="20,10 5,25 35,25" fill="#f59e0b"/>
+                                    <circle cx="20" cy="18" r="3" fill="#ffffff"/>
+                                    <text x="20" y="60" text-anchor="middle" font-size="10" fill="#92400e">Pura</text>
+                                </g>
+                                
+                                <!-- Vihara -->
+                                <g transform="translate(320,120)">
+                                    <rect x="0" y="20" width="40" height="30" fill="#8b5cf6" rx="2"/>
+                                    <polygon points="20,5 8,20 32,20" fill="#8b5cf6"/>
+                                    <polygon points="20,8 12,20 28,20" fill="#8b5cf6"/>
+                                    <text x="20" y="60" text-anchor="middle" font-size="10" fill="#6b21a8">Vihara</text>
+                                </g>
+                                
+                                <!-- People walking together -->
+                                <g transform="translate(150,200)">
+                                    <circle cx="20" cy="10" r="8" fill="#fbbf24"/>
+                                    <rect x="12" y="18" width="16" height="20" rx="2" fill="#3b82f6"/>
+                                    
+                                    <circle cx="50" cy="10" r="8" fill="#f87171"/>
+                                    <rect x="42" y="18" width="16" height="20" rx="2" fill="#10b981"/>
+                                    
+                                    <circle cx="80" cy="10" r="8" fill="#a78bfa"/>
+                                    <rect x="72" y="18" width="16" height="20" rx="2" fill="#f59e0b"/>
+                                </g>
+                                
+                                <!-- Hearts connecting them -->
+                                <text x="170" y="220" font-size="16" fill="#ef4444">❤️</text>
+                                <text x="200" y="220" font-size="16" fill="#ef4444">❤️</text>
+                                
+                                <!-- Title -->
+                                <text x="200" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">Toleransi Beragama</text>
+                                <text x="200" y="280" text-anchor="middle" font-size="14" fill="#6b7280">Saling Menghormati dalam Perbedaan</text>
+                            </svg>
+                        </div>
+
+                        <p class="text-lg text-gray-700 mb-6">
+                            Toleransi beragama adalah sikap saling menghormati dan menghargai perbedaan keyakinan agama dalam masyarakat yang majemuk, tanpa mengurangi keteguhan dalam menjalankan agama masing-masing.
+                        </p>
+
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+                            <h4 class="font-semibold text-green-800 mb-2">Bentuk-bentuk Toleransi:</h4>
+                            <ul class="list-disc list-inside text-green-700 space-y-1">
+                                <li>Menghormati tempat ibadah agama lain</li>
+                                <li>Tidak mengganggu kegiatan keagamaan orang lain</li>
+                                <li>Bersikap ramah kepada pemeluk agama lain</li>
+                                <li>Bekerja sama dalam kegiatan sosial kemasyarakatan</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Contoh Toleransi di Indonesia</h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">🏠 Kehidupan Bertetangga</h4>
+                                <p class="text-blue-700 text-sm">Saling membantu antar tetangga tanpa memandang perbedaan agama, seperti dalam acara pernikahan, duka cita, atau gotong royong.</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-yellow-800 mb-2">🎉 Perayaan Keagamaan</h4>
+                                <p class="text-yellow-700 text-sm">Saling mengucapkan selamat dan menghormati perayaan hari besar agama lain, seperti Idul Fitri, Natal, Nyepi, dan Waisak.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-800 mb-2">🏢 Lingkungan Kerja</h4>
+                                <p class="text-purple-700 text-sm">Bekerja sama dengan rekan kerja dari berbagai agama dengan saling menghormati dan mendukung.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Kerukunan Umat Beragama",
+                content: `
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Kerukunan Umat Beragama</h2>
+                    
+                    <div class="prose max-w-none">
+                        <!-- Harmony Illustration -->
+                        <div class="mb-6 text-center">
+                            <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="#fefce8"/>
+                                
+                                <!-- Three interlocking circles representing Tri Kerukunan -->
+                                <circle cx="150" cy="120" r="40" fill="#fbbf24" fill-opacity="0.3" stroke="#f59e0b" stroke-width="2"/>
+                                <circle cx="250" cy="120" r="40" fill="#34d399" fill-opacity="0.3" stroke="#10b981" stroke-width="2"/>
+                                <circle cx="200" cy="180" r="40" fill="#60a5fa" fill-opacity="0.3" stroke="#3b82f6" stroke-width="2"/>
+                                
+                                <!-- Labels for circles -->
+                                <text x="150" y="125" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">Internal</text>
+                                <text x="250" y="125" text-anchor="middle" font-size="10" font-weight="bold" fill="#065f46">Antar Agama</text>
+                                <text x="200" y="185" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e40af">Pemerintah</text>
+                                
+                                <!-- People working together -->
+                                <g transform="translate(180,140)">
+                                    <!-- Person 1 -->
+                                    <circle cx="0" cy="0" r="6" fill="#fbbf24"/>
+                                    <rect x="-4" y="6" width="8" height="12" rx="1" fill="#3b82f6"/>
+                                    
+                                    <!-- Person 2 -->
+                                    <circle cx="20" cy="0" r="6" fill="#f87171"/>
+                                    <rect x="16" y="6" width="8" height="12" rx="1" fill="#10b981"/>
+                                    
+                                    <!-- Person 3 -->
+                                    <circle cx="40" cy="0" r="6" fill="#a78bfa"/>
+                                    <rect x="36" y="6" width="8" height="12" rx="1" fill="#f59e0b"/>
+                                    
+                                    <!-- Hands joining -->
+                                    <line x1="8" y1="10" x2="16" y2="10" stroke="#6b7280" stroke-width="2"/>
+                                    <line x1="28" y1="10" x2="36" y2="10" stroke="#6b7280" stroke-width="2"/>
+                                </g>
+                                
+                                <!-- Indonesian flag -->
+                                <g transform="translate(320,60)">
+                                    <rect x="0" y="0" width="30" height="20" fill="#dc2626"/>
+                                    <rect x="0" y="10" width="30" height="10" fill="#ffffff"/>
+                                    <rect x="0" y="0" width="30" height="20" fill="none" stroke="#374151" stroke-width="1"/>
+                                </g>
+                                
+                                <!-- Unity symbol -->
+                                <text x="200" y="250" text-anchor="middle" font-size="24" fill="#f59e0b">🤝</text>
+                                
+                                <!-- Title -->
+                                <text x="200" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">Kerukunan Umat Beragama</text>
+                                <text x="200" y="280" text-anchor="middle" font-size="14" fill="#6b7280">Tri Kerukunan untuk Persatuan</text>
+                            </svg>
+                        </div>
+
+                        <p class="text-lg text-gray-700 mb-6">
+                            Kerukunan umat beragama adalah kondisi hubungan sesama umat beragama yang dilandasi toleransi, saling pengertian, saling menghormati, menghargai kesetaraan dalam pengamalan ajaran agamanya dan kerjasama dalam kehidupan bermasyarakat, berbangsa dan bernegara.
+                        </p>
+
+                        <div class="bg-orange-50 border-l-4 border-orange-400 p-4 mb-6">
+                            <h4 class="font-semibold text-orange-800 mb-2">Tiga Kerukunan (Tri Kerukunan):</h4>
+                            <ul class="list-disc list-inside text-orange-700 space-y-1">
+                                <li><strong>Kerukunan Internal</strong> - Harmoni dalam satu agama</li>
+                                <li><strong>Kerukunan Antar Umat Beragama</strong> - Harmoni antar agama berbeda</li>
+                                <li><strong>Kerukunan dengan Pemerintah</strong> - Harmoni umat dengan negara</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Strategi Membangun Kerukunan</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-indigo-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-indigo-800 mb-2">💬 Dialog Antar Agama</h4>
+                                <p class="text-indigo-700 text-sm">Mengadakan pertemuan rutin untuk saling memahami dan mencari titik temu antar umat beragama.</p>
+                            </div>
+                            <div class="bg-pink-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-pink-800 mb-2">🤝 Kerjasama Sosial</h4>
+                                <p class="text-pink-700 text-sm">Bekerja sama dalam kegiatan sosial seperti bantuan bencana, kesehatan, dan pendidikan.</p>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-teal-800 mb-2">📚 Pendidikan Multikultural</h4>
+                                <p class="text-teal-700 text-sm">Mengajarkan nilai-nilai keberagaman dan toleransi sejak dini melalui pendidikan.</p>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-red-800 mb-2">⚖️ Penegakan Hukum</h4>
+                                <p class="text-red-700 text-sm">Menerapkan hukum secara adil tanpa diskriminasi agama untuk menjaga ketertiban.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Mengatasi Radikalisme dan Ekstremisme",
+                content: `
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Mengatasi Radikalisme dan Ekstremisme</h2>
+                    
+                    <div class="prose max-w-none">
+                        <!-- Anti-Radicalism Illustration -->
+                        <div class="mb-6 text-center">
+                            <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="#fef2f2"/>
+                                
+                                <!-- Shield protecting people -->
+                                <path d="M200 80 L180 100 L180 160 L200 180 L220 160 L220 100 Z" fill="#10b981" stroke="#059669" stroke-width="2"/>
+                                <text x="200" y="135" text-anchor="middle" font-size="20" fill="#ffffff">🛡️</text>
+                                
+                                <!-- People behind shield (protected) -->
+                                <g transform="translate(160,190)">
+                                    <circle cx="20" cy="0" r="8" fill="#fbbf24"/>
+                                    <rect x="12" y="8" width="16" height="20" rx="2" fill="#3b82f6"/>
+                                    
+                                    <circle cx="50" cy="0" r="8" fill="#f87171"/>
+                                    <rect x="42" y="8" width="16" height="20" rx="2" fill="#10b981"/>
+                                    
+                                    <circle cx="80" cy="0" r="8" fill="#a78bfa"/>
+                                    <rect x="72" y="8" width="16" height="20" rx="2" fill="#f59e0b"/>
+                                </g>
+                                
+                                <!-- Danger symbols being blocked -->
+                                <g transform="translate(100,120)">
+                                    <circle cx="0" cy="0" r="15" fill="#ef4444" opacity="0.5"/>
+                                    <text x="0" y="5" text-anchor="middle" font-size="16" fill="#ffffff">⚠️</text>
+                                    <line x1="15" y1="-15" x2="45" y2="15" stroke="#ef4444" stroke-width="3" opacity="0.7"/>
+                                </g>
+                                
+                                <g transform="translate(280,120)">
+                                    <circle cx="0" cy="0" r="15" fill="#ef4444" opacity="0.5"/>
+                                    <text x="0" y="5" text-anchor="middle" font-size="16" fill="#ffffff">💥</text>
+                                    <line x1="-15" y1="-15" x2="-45" y2="15" stroke="#ef4444" stroke-width="3" opacity="0.7"/>
+                                </g>
+                                
+                                <!-- Education and dialogue symbols -->
+                                <g transform="translate(150,50)">
+                                    <circle cx="0" cy="0" r="12" fill="#3b82f6"/>
+                                    <text x="0" y="4" text-anchor="middle" font-size="12" fill="#ffffff">📚</text>
+                                    
+                                    <circle cx="50" cy="0" r="12" fill="#10b981"/>
+                                    <text x="50" y="4" text-anchor="middle" font-size="12" fill="#ffffff">💬</text>
+                                    
+                                    <circle cx="100" cy="0" r="12" fill="#f59e0b"/>
+                                    <text x="100" y="4" text-anchor="middle" font-size="12" fill="#ffffff">🤝</text>
+                                </g>
+                                
+                                <!-- Title -->
+                                <text x="200" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">Mengatasi Radikalisme</text>
+                                <text x="200" y="280" text-anchor="middle" font-size="14" fill="#6b7280">Perlindungan Melalui Pendidikan dan Dialog</text>
+                            </svg>
+                        </div>
+
+                        <p class="text-lg text-gray-700 mb-6">
+                            Radikalisme adalah paham atau aliran yang menginginkan perubahan atau pembaharuan sosial dan politik secara drastis dengan menggunakan cara-cara kekerasan. Ekstremisme adalah sikap yang cenderung radikal dalam politik dan agama.
+                        </p>
+
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+                            <h4 class="font-semibold text-red-800 mb-2">Ciri-ciri Radikalisme:</h4>
+                            <ul class="list-disc list-inside text-red-700 space-y-1">
+                                <li>Intoleran terhadap perbedaan pendapat</li>
+                                <li>Fanatik dan merasa paling benar</li>
+                                <li>Eksklusif dan tidak mau berdialog</li>
+                                <li>Revolusioner dengan cara kekerasan</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Cara Mencegah Radikalisme</h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">🎓 Pendidikan Moderasi</h4>
+                                <p class="text-blue-700 text-sm">Mengajarkan pemahaman agama yang moderat, toleran, dan menghargai perbedaan sejak dini.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-800 mb-2">🗣️ Dialog Terbuka</h4>
+                                <p class="text-green-700 text-sm">Menciptakan ruang dialog yang terbuka untuk membahas perbedaan pandangan secara damai.</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-yellow-800 mb-2">💼 Pemberdayaan Ekonomi</h4>
+                                <p class="text-yellow-700 text-sm">Meningkatkan kesejahteraan masyarakat untuk mengurangi kerentanan terhadap paham radikal.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-800 mb-2">👥 Peran Tokoh Agama</h4>
+                                <p class="text-purple-700 text-sm">Melibatkan tokoh agama dalam menyebarkan pemahaman yang moderat dan damai.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Implementasi Moderasi Beragama",
+                content: `
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Implementasi Moderasi Beragama</h2>
+                    
+                    <div class="prose max-w-none">
+                        <!-- Implementation Illustration -->
+                        <div class="mb-6 text-center">
+                            <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="#f8fafc"/>
+                                
+                                <!-- Pyramid structure showing levels of implementation -->
+                                <!-- Government level (top) -->
+                                <polygon points="200,60 160,100 240,100" fill="#6366f1" opacity="0.8"/>
+                                <text x="200" y="85" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">🏛️ Negara</text>
+                                
+                                <!-- Society level -->
+                                <polygon points="200,100 140,140 260,140" fill="#10b981" opacity="0.8"/>
+                                <text x="200" y="125" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">🏘️ Masyarakat</text>
+                                
+                                <!-- Family level -->
+                                <polygon points="200,140 120,180 280,180" fill="#f59e0b" opacity="0.8"/>
+                                <text x="200" y="165" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">👨‍👩‍👧‍👦 Keluarga</text>
+                                
+                                <!-- Individual level (base) -->
+                                <polygon points="200,180 100,220 300,220" fill="#ef4444" opacity="0.8"/>
+                                <text x="200" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">👤 Individu</text>
+                                
+                                <!-- Implementation arrows -->
+                                <g transform="translate(320,120)">
+                                    <circle cx="0" cy="0" r="20" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+                                    <text x="0" y="5" text-anchor="middle" font-size="16">⚙️</text>
+                                    <text x="0" y="35" text-anchor="middle" font-size="10" fill="#6b7280">Implementasi</text>
+                                </g>
+                                
+                                <!-- Success indicators -->
+                                <g transform="translate(60,120)">
+                                    <circle cx="0" cy="-20" r="8" fill="#10b981"/>
+                                    <text x="0" y="-16" text-anchor="middle" font-size="8" fill="#ffffff">✓</text>
+                                    
+                                    <circle cx="0" cy="0" r="8" fill="#10b981"/>
+                                    <text x="0" y="4" text-anchor="middle" font-size="8" fill="#ffffff">✓</text>
+                                    
+                                    <circle cx="0" cy="20" r="8" fill="#10b981"/>
+                                    <text x="0" y="24" text-anchor="middle" font-size="8" fill="#ffffff">✓</text>
+                                    
+                                    <circle cx="0" cy="40" r="8" fill="#10b981"/>
+                                    <text x="0" y="44" text-anchor="middle" font-size="8" fill="#ffffff">✓</text>
+                                </g>
+                                
+                                <!-- Title -->
+                                <text x="200" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">Implementasi Moderasi Beragama</text>
+                                <text x="200" y="280" text-anchor="middle" font-size="14" fill="#6b7280">Komitmen Bersama Semua Pihak</text>
+                            </svg>
+                        </div>
+
+                        <p class="text-lg text-gray-700 mb-6">
+                            Implementasi moderasi beragama memerlukan komitmen dari semua pihak - individu, keluarga, masyarakat, dan negara - untuk mewujudkan kehidupan beragama yang harmonis dan damai.
+                        </p>
+
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Peran Berbagai Pihak</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">👤 Individu</h4>
+                                <p class="text-blue-700 text-sm">Memahami dan mengamalkan ajaran agama dengan moderat, toleran terhadap perbedaan, dan aktif dalam kegiatan lintas agama.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-800 mb-2">👨‍👩‍👧‍👦 Keluarga</h4>
+                                <p class="text-green-700 text-sm">Mendidik anak dengan nilai-nilai toleransi, menghormati perbedaan, dan mengajarkan sikap moderat dalam beragama.</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-yellow-800 mb-2">🏘️ Masyarakat</h4>
+                                <p class="text-yellow-700 text-sm">Menciptakan lingkungan yang kondusif untuk kerukunan, mengadakan kegiatan lintas agama, dan menolak intoleransi.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-800 mb-2">🏛️ Pemerintah</h4>
+                                <p class="text-purple-700 text-sm">Membuat kebijakan yang mendukung moderasi beragama, menegakkan hukum secara adil, dan memfasilitasi dialog antar agama.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 p-6 rounded-lg">
+                            <h4 class="font-semibold text-indigo-800 mb-3">🎯 Langkah Konkret Implementasi:</h4>
+                            <ul class="list-disc list-inside text-indigo-700 space-y-2">
+                                <li>Mengembangkan kurikulum pendidikan yang inklusif</li>
+                                <li>Membentuk forum kerukunan umat beragama</li>
+                                <li>Mengadakan pelatihan moderasi beragama</li>
+                                <li>Memperkuat peran media dalam menyebarkan toleransi</li>
+                                <li>Melakukan monitoring dan evaluasi berkala</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        const caseStudies = [
+            {
+                title: "Kasus Konflik Pembangunan Rumah Ibadah di Bekasi",
+                situation: "Pada tahun 2019, terjadi penolakan pembangunan gereja di salah satu daerah di Bekasi oleh sebagian warga setempat. Konflik ini berlangsung selama berbulan-bulan dan menimbulkan ketegangan antar umat beragama.",
+                illustration: `
+                    <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="400" height="300" fill="#fef7f0"/>
+                        
+                        <!-- Conflict situation -->
+                        <g transform="translate(100,120)">
+                            <!-- Building under construction -->
+                            <rect x="0" y="20" width="60" height="40" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+                            <polygon points="30,5 10,20 50,20" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+                            <rect x="25" y="8" width="10" height="12" fill="#e5e7eb"/>
+                            <rect x="20" y="12" width="20" height="3" fill="#e5e7eb"/>
+                            <text x="30" y="75" text-anchor="middle" font-size="10" fill="#6b7280">Gereja (Dibangun)</text>
+                            
+                            <!-- Construction barrier -->
+                            <rect x="-10" y="50" width="80" height="5" fill="#ef4444"/>
+                            <text x="30" y="45" text-anchor="middle" font-size="8" fill="#ef4444">STOP</text>
+                        </g>
+                        
+                        <!-- Opposing groups -->
+                        <g transform="translate(50,180)">
+                            <!-- Group 1 (opposing) -->
+                            <circle cx="0" cy="0" r="8" fill="#ef4444"/>
+                            <rect x="-6" y="8" width="12" height="15" rx="1" fill="#fca5a5"/>
+                            
+                            <circle cx="20" cy="0" r="8" fill="#ef4444"/>
+                            <rect x="14" y="8" width="12" height="15" rx="1" fill="#fca5a5"/>
+                            
+                            <circle cx="40" cy="0" r="8" fill="#ef4444"/>
+                            <rect x="34" y="8" width="12" height="15" rx="1" fill="#fca5a5"/>
+                            
+                            <text x="20" y="40" text-anchor="middle" font-size="10" fill="#dc2626">Menolak</text>
+                        </g>
+                        
+                        <g transform="translate(250,180)">
+                            <!-- Group 2 (supporting) -->
+                            <circle cx="0" cy="0" r="8" fill="#3b82f6"/>
+                            <rect x="-6" y="8" width="12" height="15" rx="1" fill="#93c5fd"/>
+                            
+                            <circle cx="20" cy="0" r="8" fill="#3b82f6"/>
+                            <rect x="14" y="8" width="12" height="15" rx="1" fill="#93c5fd"/>
+                            
+                            <circle cx="40" cy="0" r="8" fill="#3b82f6"/>
+                            <rect x="34" y="8" width="12" height="15" rx="1" fill="#93c5fd"/>
+                            
+                            <text x="20" y="40" text-anchor="middle" font-size="10" fill="#2563eb">Mendukung</text>
+                        </g>
+                        
+                        <!-- Title -->
+                        <text x="200" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f2937">Konflik Pembangunan Rumah Ibadah</text>
+                        <text x="200" y="280" text-anchor="middle" font-size="12" fill="#6b7280">Bekasi, 2019</text>
+                    </svg>
+                `,
+                analysis: [
+                    {
+                        title: "Akar Masalah",
+                        content: "Kurangnya komunikasi dan sosialisasi yang baik antara pihak gereja dengan masyarakat setempat sebelum pembangunan dimulai. Adanya kesalahpahaman tentang prosedur perizinan dan kekhawatiran akan perubahan demografi wilayah."
+                    },
+                    {
+                        title: "Dampak Konflik",
+                        content: "Ketegangan sosial yang berkepanjangan, polarisasi masyarakat, dan terhambatnya aktivitas keagamaan. Konflik juga berdampak pada kegiatan ekonomi dan sosial di wilayah tersebut."
+                    }
+                ],
+                solution: [
+                    "Dialog intensif melibatkan tokoh agama, tokoh masyarakat, dan pemerintah daerah",
+                    "Pembentukan forum komunikasi antar umat beragama di tingkat kelurahan",
+                    "Sosialisasi yang lebih baik tentang regulasi pembangunan rumah ibadah",
+                    "Komitmen bersama untuk menghormati hak beribadah setiap warga"
+                ],
+                lesson: "Pentingnya komunikasi proaktif dan melibatkan semua stakeholder dalam setiap rencana pembangunan fasilitas keagamaan. Dialog yang terbuka dan transparan dapat mencegah konflik sebelum terjadi."
+            },
+            {
+                title: "Keberhasilan Program 'Kampung Toleransi' di Tlogosari, Semarang",
+                situation: "Kelurahan Tlogosari Kulon di Semarang berhasil menciptakan harmoni antar umat beragama melalui program 'Kampung Toleransi' yang dimulai sejak 2018. Program ini melibatkan seluruh warga dari berbagai latar belakang agama.",
+                illustration: `
+                    <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="400" height="300" fill="#f0fdf4"/>
+                        
+                        <!-- Village houses -->
+                        <g transform="translate(80,120)">
+                            <!-- House 1 -->
+                            <rect x="0" y="20" width="30" height="25" fill="#fbbf24" rx="2"/>
+                            <polygon points="15,10 5,20 25,20" fill="#dc2626"/>
+                            <rect x="10" y="30" width="8" height="10" fill="#8b4513"/>
+                            <rect x="20" y="25" width="6" height="6" fill="#60a5fa"/>
+                            
+                            <!-- House 2 -->
+                            <rect x="40" y="20" width="30" height="25" fill="#34d399" rx="2"/>
+                            <polygon points="55,10 45,20 65,20" fill="#dc2626"/>
+                            <rect x="50" y="30" width="8" height="10" fill="#8b4513"/>
+                            <rect x="60" y="25" width="6" height="6" fill="#60a5fa"/>
+                            
+                            <!-- House 3 -->
+                            <rect x="80" y="20" width="30" height="25" fill="#a78bfa" rx="2"/>
+                            <polygon points="95,10 85,20 105,20" fill="#dc2626"/>
+                            <rect x="90" y="30" width="8" height="10" fill="#8b4513"/>
+                            <rect x="100" y="25" width="6" height="6" fill="#60a5fa"/>
+                        </g>
+                        
+                        <!-- Community activities -->
+                        <g transform="translate(150,180)">
+                            <!-- People in circle (community meeting) -->
+                            <circle cx="0" cy="0" r="40" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+                            
+                            <!-- People around circle -->
+                            <g transform="rotate(0) translate(0,-30)">
+                                <circle cx="0" cy="0" r="6" fill="#fbbf24"/>
+                                <rect x="-4" y="6" width="8" height="10" rx="1" fill="#3b82f6"/>
+                            </g>
+                            
+                            <g transform="rotate(60) translate(0,-30)">
+                                <circle cx="0" cy="0" r="6" fill="#f87171"/>
+                                <rect x="-4" y="6" width="8" height="10" rx="1" fill="#10b981"/>
+                            </g>
+                            
+                            <g transform="rotate(120) translate(0,-30)">
+                                <circle cx="0" cy="0" r="6" fill="#a78bfa"/>
+                                <rect x="-4" y="6" width="8" height="10" rx="1" fill="#f59e0b"/>
+                            </g>
+                            
+                            <g transform="rotate(180) translate(0,-30)">
+                                <circle cx="0" cy="0" r="6" fill="#34d399"/>
+                                <rect x="-4" y="6" width="8" height="10" rx="1" fill="#ef4444"/>
+                            </g>
+                            
+                            <g transform="rotate(240) translate(0,-30)">
+                                <circle cx="0" cy="0" r="6" fill="#fb7185"/>
+                                <rect x="-4" y="6" width="8" height="10" rx="1" fill="#8b5cf6"/>
+                            </g>
+                            
+                            <g transform="rotate(300) translate(0,-30)">
+                                <circle cx="0" cy="0" r="6" fill="#60a5fa"/>
+                                <rect x="-4" y="6" width="8" height="10" rx="1" fill="#f97316"/>
+                            </g>
+                            
+                            <!-- Center symbol -->
+                            <text x="0" y="5" text-anchor="middle" font-size="16" fill="#10b981">🤝</text>
+                        </g>
+                        
+                        <!-- Success indicators -->
+                        <g transform="translate(320,100)">
+                            <circle cx="0" cy="0" r="15" fill="#10b981" opacity="0.2"/>
+                            <text x="0" y="5" text-anchor="middle" font-size="16" fill="#10b981">✓</text>
+                            <text x="0" y="30" text-anchor="middle" font-size="8" fill="#065f46">Harmonis</text>
+                        </g>
+                        
+                        <g transform="translate(320,150)">
+                            <circle cx="0" cy="0" r="15" fill="#10b981" opacity="0.2"/>
+                            <text x="0" y="5" text-anchor="middle" font-size="16" fill="#10b981">✓</text>
+                            <text x="0" y="30" text-anchor="middle" font-size="8" fill="#065f46">Toleran</text>
+                        </g>
+                        
+                        <!-- Title -->
+                        <text x="200" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f2937">Kampung Toleransi Tlogosari</text>
+                        <text x="200" y="280" text-anchor="middle" font-size="12" fill="#6b7280">Semarang - Model Keberhasilan</text>
+                    </svg>
+                `,
+                analysis: [
+                    {
+                        title: "Faktor Keberhasilan",
+                        content: "Kepemimpinan yang kuat dari tokoh masyarakat, partisipasi aktif seluruh warga, dan dukungan penuh dari pemerintah daerah. Program ini juga didukung oleh kegiatan rutin yang melibatkan semua elemen masyarakat."
+                    },
+                    {
+                        title: "Program Unggulan",
+                        content: "Kegiatan gotong royong lintas agama, perayaan hari besar bersama, program ekonomi kreatif berbasis komunitas, dan pendidikan toleransi untuk anak-anak melalui sanggar budaya."
+                    }
+                ],
+                solution: [
+                    "Pembentukan Tim Relawan Toleransi dari berbagai latar belakang agama",
+                    "Kegiatan rutin 'Jumat Berkah' untuk berbagi makanan antar tetangga",
+                    "Festival budaya tahunan yang menampilkan keberagaman tradisi",
+                    "Program beasiswa untuk anak-anak berprestasi tanpa memandang agama"
+                ],
+                lesson: "Toleransi dapat dibangun melalui interaksi positif yang konsisten dan kegiatan bersama yang saling menguntungkan. Kepemimpinan yang inklusif dan program yang menyentuh kehidupan sehari-hari menjadi kunci keberhasilan."
+            },
+            {
+                title: "Penanganan Hoaks Keagamaan di Media Sosial",
+                situation: "Pada tahun 2020, beredar video hoaks di media sosial yang mengklaim adanya penistaan agama oleh salah satu tokoh agama. Video ini viral dan menimbulkan kemarahan massal serta ancaman kekerasan antar umat beragama di beberapa daerah.",
+                illustration: `
+                    <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="400" height="300" fill="#fef2f2"/>
+                        
+                        <!-- Social media devices -->
+                        <g transform="translate(100,80)">
+                            <!-- Phone 1 -->
+                            <rect x="0" y="0" width="25" height="40" rx="3" fill="#374151" stroke="#6b7280"/>
+                            <rect x="2" y="3" width="21" height="30" fill="#ef4444" opacity="0.8"/>
+                            <text x="12.5" y="20" text-anchor="middle" font-size="12" fill="#ffffff">📱</text>
+                            <text x="12.5" y="50" text-anchor="middle" font-size="8" fill="#6b7280">Hoaks</text>
+                            
+                            <!-- Phone 2 -->
+                            <rect x="40" y="0" width="25" height="40" rx="3" fill="#374151" stroke="#6b7280"/>
+                            <rect x="42" y="3" width="21" height="30" fill="#ef4444" opacity="0.8"/>
+                            <text x="52.5" y="20" text-anchor="middle" font-size="12" fill="#ffffff">📱</text>
+                            <text x="52.5" y="50" text-anchor="middle" font-size="8" fill="#6b7280">Viral</text>
+                            
+                            <!-- Phone 3 -->
+                            <rect x="80" y="0" width="25" height="40" rx="3" fill="#374151" stroke="#6b7280"/>
+                            <rect x="82" y="3" width="21" height="30" fill="#ef4444" opacity="0.8"/>
+                            <text x="92.5" y="20" text-anchor="middle" font-size="12" fill="#ffffff">📱</text>
+                            <text x="92.5" y="50" text-anchor="middle" font-size="8" fill="#6b7280">Tersebar</text>
+                        </g>
+                        
+                        <!-- Angry reactions -->
+                        <g transform="translate(250,120)">
+                            <circle cx="0" cy="0" r="12" fill="#fca5a5"/>
+                            <text x="0" y="4" text-anchor="middle" font-size="12">😡</text>
+                            
+                            <circle cx="25" cy="0" r="12" fill="#fca5a5"/>
+                            <text x="25" y="4" text-anchor="middle" font-size="12">😠</text>
+                            
+                            <circle cx="50" cy="0" r="12" fill="#fca5a5"/>
+                            <text x="50" y="4" text-anchor="middle" font-size="12">🤬</text>
+                        </g>
+                        
+                        <!-- Solution: Fact checking -->
+                        <g transform="translate(150,200)">
+                            <!-- Shield with check mark -->
+                            <circle cx="0" cy="0" r="25" fill="#10b981" opacity="0.2"/>
+                            <text x="0" y="5" text-anchor="middle" font-size="20" fill="#10b981">🛡️</text>
+                            <text x="0" y="35" text-anchor="middle" font-size="10" fill="#065f46">Fact Check</text>
+                            
+                            <!-- Truth symbol -->
+                            <circle cx="50" cy="0" r="25" fill="#3b82f6" opacity="0.2"/>
+                            <text x="50" y="5" text-anchor="middle" font-size="20" fill="#3b82f6">✓</text>
+                            <text x="50" y="35" text-anchor="middle" font-size="10" fill="#1e40af">Kebenaran</text>
+                            
+                            <!-- Peace symbol -->
+                            <circle cx="100" cy="0" r="25" fill="#f59e0b" opacity="0.2"/>
+                            <text x="100" y="5" text-anchor="middle" font-size="20" fill="#f59e0b">☮️</text>
+                            <text x="100" y="35" text-anchor="middle" font-size="10" fill="#92400e">Damai</text>
+                        </g>
+                        
+                        <!-- Title -->
+                        <text x="200" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f2937">Hoaks Keagamaan di Media Sosial</text>
+                        <text x="200" y="280" text-anchor="middle" font-size="12" fill="#6b7280">Tantangan Era Digital</text>
+                    </svg>
+                `,
+                analysis: [
+                    {
+                        title: "Penyebab Penyebaran",
+                        content: "Kurangnya literasi digital masyarakat, kecenderungan untuk langsung mempercayai informasi tanpa verifikasi, dan algoritma media sosial yang mempercepat penyebaran konten kontroversial."
+                    },
+                    {
+                        title: "Dampak Negatif",
+                        content: "Polarisasi masyarakat, ancaman kekerasan terhadap tokoh agama, kerusuhan di beberapa daerah, dan menurunnya kepercayaan antar umat beragama."
+                    }
+                ],
+                solution: [
+                    "Kolaborasi platform media sosial dengan lembaga fact-checking",
+                    "Edukasi literasi digital kepada masyarakat, terutama kelompok rentan",
+                    "Respons cepat dari tokoh agama dan pemerintah dengan klarifikasi resmi",
+                    "Pembentukan tim monitoring konten keagamaan di media sosial"
+                ],
+                lesson: "Era digital membutuhkan kewaspadaan ekstra terhadap penyebaran informasi palsu. Literasi digital dan verifikasi informasi menjadi keterampilan penting untuk menjaga kerukunan beragama di era modern."
+            }
+        ];
+
+        function showWelcome() {
+            document.getElementById('welcome-section').classList.remove('hidden');
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('module-content').classList.add('hidden');
+            document.getElementById('case-study-section').classList.add('hidden');
+            document.getElementById('quiz-section').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('references-section').classList.add('hidden');
+        }
+
+        function showMainMenu() {
+            document.getElementById('welcome-section').classList.add('hidden');
+            document.getElementById('main-menu').classList.remove('hidden');
+            document.getElementById('module-content').classList.add('hidden');
+            document.getElementById('case-study-section').classList.add('hidden');
+            document.getElementById('quiz-section').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('references-section').classList.add('hidden');
+        }
+
+        function showModule(type) {
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('module-content').classList.remove('hidden');
+            currentModuleIndex = 0;
+            updateModuleContent();
+        }
+
+        function showCaseStudy() {
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('case-study-section').classList.remove('hidden');
+            currentCaseIndex = 0;
+            updateCaseStudyContent();
+        }
+
+        function showQuiz() {
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
+            resetQuiz();
+        }
+
+        function showReferences() {
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('references-section').classList.remove('hidden');
+            loadReferencesContent();
+        }
+
+        function loadReferencesContent() {
+            const referencesContent = `
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Daftar Referensi</h2>
+                
+                <div class="prose max-w-none">
+                    <!-- References Illustration -->
+                    <div class="mb-6 text-center">
+                        <svg class="mx-auto w-80 h-60 mb-4" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect width="400" height="300" fill="#f0f9ff"/>
+                            
+                            <!-- Books stack -->
+                            <g transform="translate(150,120)">
+                                <!-- Book 1 -->
+                                <rect x="0" y="0" width="100" height="15" fill="#3b82f6" rx="2"/>
+                                <rect x="5" y="2" width="90" height="11" fill="#60a5fa" rx="1"/>
+                                <text x="50" y="10" text-anchor="middle" font-size="8" fill="#ffffff">Al-Qur'an & Hadits</text>
+                                
+                                <!-- Book 2 -->
+                                <rect x="0" y="20" width="100" height="15" fill="#10b981" rx="2"/>
+                                <rect x="5" y="22" width="90" height="11" fill="#34d399" rx="1"/>
+                                <text x="50" y="30" text-anchor="middle" font-size="8" fill="#ffffff">Peraturan Pemerintah</text>
+                                
+                                <!-- Book 3 -->
+                                <rect x="0" y="40" width="100" height="15" fill="#f59e0b" rx="2"/>
+                                <rect x="5" y="42" width="90" height="11" fill="#fbbf24" rx="1"/>
+                                <text x="50" y="50" text-anchor="middle" font-size="8" fill="#ffffff">Jurnal Akademik</text>
+                                
+                                <!-- Book 4 -->
+                                <rect x="0" y="60" width="100" height="15" fill="#ef4444" rx="2"/>
+                                <rect x="5" y="62" width="90" height="11" fill="#f87171" rx="1"/>
+                                <text x="50" y="70" text-anchor="middle" font-size="8" fill="#ffffff">Buku Referensi</text>
+                                
+                                <!-- Book 5 -->
+                                <rect x="0" y="80" width="100" height="15" fill="#8b5cf6" rx="2"/>
+                                <rect x="5" y="82" width="90" height="11" fill="#a78bfa" rx="1"/>
+                                <text x="50" y="90" text-anchor="middle" font-size="8" fill="#ffffff">Artikel Online</text>
+                            </g>
+                            
+                            <!-- Magnifying glass -->
+                            <g transform="translate(280,140)">
+                                <circle cx="0" cy="0" r="20" fill="none" stroke="#6b7280" stroke-width="3"/>
+                                <line x1="15" y1="15" x2="25" y2="25" stroke="#6b7280" stroke-width="3"/>
+                                <text x="0" y="5" text-anchor="middle" font-size="16">📖</text>
+                            </g>
+                            
+                            <!-- Title -->
+                            <text x="200" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1f2937">Referensi Moderasi Beragama</text>
+                            <text x="200" y="280" text-anchor="middle" font-size="14" fill="#6b7280">Sumber Terpercaya untuk Pembelajaran</text>
+                        </svg>
+                    </div>
+
+                    <p class="text-lg text-gray-700 mb-8">
+                        Berikut adalah daftar referensi yang digunakan dalam penyusunan materi pembelajaran moderasi beragama ini. Referensi ini terdiri dari sumber-sumber terpercaya baik dari Al-Qur'an dan Hadits, peraturan pemerintah, jurnal akademik, buku, maupun artikel ilmiah.
+                    </p>
+
+                    <!-- Al-Qur'an dan Hadits -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-blue-800 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">📖</span>
+                            Al-Qur'an dan Hadits
+                        </h3>
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 space-y-2">
+                            <p class="text-blue-800"><strong>1.</strong> Al-Qur'an Surah Al-Baqarah ayat 143: "Dan demikian (pula) Kami telah menjadikan kamu (umat Islam), umat yang adil dan pilihan..."</p>
+                            <p class="text-blue-800"><strong>2.</strong> Al-Qur'an Surah Al-Hujurat ayat 13: "Hai manusia, sesungguhnya Kami menciptakan kamu dari seorang laki-laki dan seorang perempuan..."</p>
+                            <p class="text-blue-800"><strong>3.</strong> Hadits Riwayat Muslim: "Barangsiapa yang menyakiti ahli dzimmah, maka ia telah menyakitiku."</p>
+                            <p class="text-blue-800"><strong>4.</strong> Al-Qur'an Surah Al-Kafirun ayat 6: "Untukmu agamamu, dan untukkulah agamaku."</p>
+                        </div>
+                    </div>
+
+                    <!-- Peraturan Pemerintah -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-green-800 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">⚖️</span>
+                            Peraturan Pemerintah dan Kebijakan
+                        </h3>
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4 space-y-2">
+                            <p class="text-green-800"><strong>1.</strong> Undang-Undang Dasar 1945 Pasal 29 tentang Kebebasan Beragama</p>
+                            <p class="text-green-800"><strong>2.</strong> Peraturan Bersama Menteri (PBM) No. 9 dan 8 Tahun 2006 tentang Pedoman Pelaksanaan Tugas Kepala Daerah/Wakil Kepala Daerah dalam Pemeliharaan Kerukunan Umat Beragama</p>
+                            <p class="text-green-800"><strong>3.</strong> Keputusan Menteri Agama RI No. 511 Tahun 2021 tentang Moderasi Beragama</p>
+                            <p class="text-green-800"><strong>4.</strong> Peraturan Menteri Agama No. 31 Tahun 2019 tentang Optimalisasi Masjid</p>
+                            <p class="text-green-800"><strong>5.</strong> Instruksi Presiden No. 1 Tahun 1991 tentang Penyebarluasan Kompilasi Hukum Islam</p>
+                        </div>
+                    </div>
+
+                    <!-- Buku dan Jurnal -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-yellow-800 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">📚</span>
+                            Buku dan Jurnal Akademik
+                        </h3>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 space-y-3">
+                            <div class="text-yellow-800">
+                                <p><strong>1.</strong> Kementerian Agama RI. (2019). <em>Moderasi Beragama</em>. Jakarta: Badan Litbang dan Diklat Kementerian Agama RI.</p>
+                            </div>
+                            <div class="text-yellow-800">
+                                <p><strong>2.</strong> Shihab, M. Quraish. (2019). <em>Wasathiyyah: Wawasan Islam tentang Moderasi Beragama</em>. Tangerang: Lentera Hati.</p>
+                            </div>
+                            <div class="text-yellow-800">
+                                <p><strong>3.</strong> Azra, Azyumardi. (2020). "Moderasi Beragama dalam Keragaman Indonesia." <em>Jurnal Dialog</em>, Vol. 43, No. 1.</p>
+                            </div>
+                            <div class="text-yellow-800">
+                                <p><strong>4.</strong> Hilmy, Masdar. (2013). "Whither Indonesia's Islamic Moderatism? A Reexamination on the Moderate Vision of Muhammadiyah and NU." <em>Journal of Indonesian Islam</em>, Vol. 7, No. 1.</p>
+                            </div>
+                            <div class="text-yellow-800">
+                                <p><strong>5.</strong> Bruinessen, Martin van. (2013). <em>Contemporary Developments in Indonesian Islam: Explaining the Conservative Turn</em>. Singapore: ISEAS Publishing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artikel dan Website -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-purple-800 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">🌐</span>
+                            Artikel Online dan Website
+                        </h3>
+                        <div class="bg-purple-50 border-l-4 border-purple-400 p-4 space-y-3">
+                            <div class="text-purple-800">
+                                <p><strong>1.</strong> Portal Moderasi Beragama Kementerian Agama RI: <span class="text-blue-600">https://moderasiberagama.kemenag.go.id</span></p>
+                            </div>
+                            <div class="text-purple-800">
+                                <p><strong>2.</strong> Wahid Foundation. (2020). "Laporan Survei Nasional tentang Toleransi dan Radikalisme di Indonesia."</p>
+                            </div>
+                            <div class="text-purple-800">
+                                <p><strong>3.</strong> SETARA Institute. (2021). "Indeks Kota Toleran (IKT) 2021."</p>
+                            </div>
+                            <div class="text-purple-800">
+                                <p><strong>4.</strong> Pusat Pengkajian Islam dan Masyarakat (PPIM) UIN Jakarta. (2020). "Survei Nasional tentang Toleransi Keagamaan di Kalangan Muslim Indonesia."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Organisasi dan Lembaga -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-red-800 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">🏛️</span>
+                            Lembaga dan Organisasi
+                        </h3>
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 space-y-2">
+                            <p class="text-red-800"><strong>1.</strong> Nahdlatul Ulama (NU) - Aswaja An-Nahdliyah</p>
+                            <p class="text-red-800"><strong>2.</strong> Muhammadiyah - Tajdid dan Dakwah</p>
+                            <p class="text-red-800"><strong>3.</strong> Majelis Ulama Indonesia (MUI)</p>
+                            <p class="text-red-800"><strong>4.</strong> Forum Kerukunan Umat Beragama (FKUB)</p>
+                            <p class="text-red-800"><strong>5.</strong> Persekutuan Gereja-gereja di Indonesia (PGI)</p>
+                            <p class="text-red-800"><strong>6.</strong> Konferensi Waligereja Indonesia (KWI)</p>
+                            <p class="text-red-800"><strong>7.</strong> Parisada Hindu Dharma Indonesia (PHDI)</p>
+                            <p class="text-red-800"><strong>8.</strong> Perwakilan Umat Buddha Indonesia (Walubi)</p>
+                        </div>
+                    </div>
+
+                    <!-- Konferensi dan Seminar -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-indigo-800 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">🎤</span>
+                            Konferensi dan Seminar
+                        </h3>
+                        <div class="bg-indigo-50 border-l-4 border-indigo-400 p-4 space-y-2">
+                            <p class="text-indigo-800"><strong>1.</strong> Konferensi Internasional Moderasi Beragama, Jakarta 2019</p>
+                            <p class="text-indigo-800"><strong>2.</strong> Seminar Nasional "Islam Wasathiyah dan Kebangsaan", UIN Jakarta 2020</p>
+                            <p class="text-indigo-800"><strong>3.</strong> Dialog Antar Agama "Membangun Toleransi di Era Digital", Yogyakarta 2021</p>
+                            <p class="text-indigo-800"><strong>4.</strong> Workshop Moderasi Beragama untuk Pendidik, Surabaya 2021</p>
+                        </div>
+                    </div>
+
+                    <!-- Catatan Penting -->
+                    <div class="bg-gradient-to-r from-teal-50 to-cyan-50 border border-teal-200 p-6 rounded-lg">
+                        <h4 class="font-semibold text-teal-800 mb-3 flex items-center">
+                            <span class="text-xl mr-2">📝</span>
+                            Catatan Penting
+                        </h4>
+                        <ul class="list-disc list-inside text-teal-700 space-y-2">
+                            <li>Semua referensi telah diverifikasi keabsahan dan kredibilitasnya</li>
+                            <li>Materi disusun berdasarkan prinsip-prinsip akademik yang objektif</li>
+                            <li>Referensi mencakup berbagai perspektif untuk memberikan pemahaman yang komprehensif</li>
+                            <li>Untuk referensi terbaru, silakan kunjungi website resmi lembaga terkait</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('references-content').innerHTML = referencesContent;
+        }
+
+        function updateModuleContent() {
+            const module = modules[currentModuleIndex];
+            document.getElementById('module-number').textContent = currentModuleIndex + 1;
+            document.getElementById('module-content-body').innerHTML = module.content;
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prev-module');
+            const nextBtn = document.getElementById('next-module');
+            
+            prevBtn.style.visibility = currentModuleIndex === 0 ? 'hidden' : 'visible';
+            prevBtn.onclick = () => {
+                if (currentModuleIndex > 0) {
+                    currentModuleIndex--;
+                    updateModuleContent();
+                }
+            };
+            
+            if (currentModuleIndex === modules.length - 1) {
+                nextBtn.textContent = 'Selesai';
+                nextBtn.onclick = () => {
+                    alert('Selamat! Anda telah menyelesaikan semua modul pembelajaran.');
+                    showMainMenu();
+                };
+            } else {
+                nextBtn.textContent = 'Selanjutnya →';
+                nextBtn.onclick = () => {
+                    currentModuleIndex++;
+                    updateModuleContent();
+                };
+            }
+        }
+
+        function updateCaseStudyContent() {
+            const caseStudy = caseStudies[currentCaseIndex];
+            document.getElementById('case-number').textContent = currentCaseIndex + 1;
+            
+            const content = `
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">${caseStudy.title}</h2>
+                
+                <div class="prose max-w-none">
+                    <!-- Case Study Illustration -->
+                    <div class="mb-6 text-center">
+                        ${caseStudy.illustration}
+                    </div>
+
+                    <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6">
+                        <h4 class="font-semibold text-amber-800 mb-2">📋 Situasi:</h4>
+                        <p class="text-amber-700">${caseStudy.situation}</p>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Analisis Kasus</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        ${caseStudy.analysis.map(item => `
+                            <div class="bg-red-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-red-800 mb-2">🔍 ${item.title}</h4>
+                                <p class="text-red-700 text-sm">${item.content}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Solusi yang Diterapkan</h3>
+                    <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+                        <ul class="list-disc list-inside text-green-700 space-y-2">
+                            ${caseStudy.solution.map(solution => `<li>${solution}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-3">💡 Pelajaran yang Dapat Diambil:</h4>
+                        <p class="text-blue-700">${caseStudy.lesson}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('case-study-content').innerHTML = content;
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prev-case');
+            const nextBtn = document.getElementById('next-case');
+            
+            prevBtn.style.visibility = currentCaseIndex === 0 ? 'hidden' : 'visible';
+            prevBtn.onclick = () => {
+                if (currentCaseIndex > 0) {
+                    currentCaseIndex--;
+                    updateCaseStudyContent();
+                }
+            };
+            
+            if (currentCaseIndex === caseStudies.length - 1) {
+                nextBtn.textContent = 'Selesai';
+                nextBtn.onclick = () => {
+                    alert('Selamat! Anda telah menyelesaikan semua studi kasus.');
+                    showMainMenu();
+                };
+            } else {
+                nextBtn.textContent = 'Kasus Selanjutnya →';
+                nextBtn.onclick = () => {
+                    currentCaseIndex++;
+                    updateCaseStudyContent();
+                };
+            }
+        }
+
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedOption = null;
+            updateQuizDisplay();
+        }
+
+        function updateQuizDisplay() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('question-number').textContent = currentQuestionIndex + 1;
+            document.getElementById('quiz-progress').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
+            
+            document.querySelector('#quiz-content h2').textContent = question.question;
+            
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach((option, index) => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                option.querySelector('span').textContent = question.options[index];
+                option.querySelector('.w-3').classList.add('hidden');
+                option.onclick = () => selectOption(option, index === question.correct);
+            });
+
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-question').classList.add('hidden');
+        }
+
+        function selectOption(element, isCorrect) {
+            if (selectedOption) return;
+
+            selectedOption = element;
+            const options = document.querySelectorAll('.quiz-option');
+            
+            options.forEach((option, index) => {
+                option.onclick = null;
+                if (index === questions[currentQuestionIndex].correct) {
+                    option.classList.add('correct');
+                } else if (option === element && !isCorrect) {
+                    option.classList.add('incorrect');
+                }
+                option.querySelector('.w-3').classList.remove('hidden');
+            });
+
+            if (isCorrect) {
+                score++;
+            }
+
+            showFeedback(isCorrect);
+        }
+
+        function showFeedback(isCorrect) {
+            const feedback = document.getElementById('quiz-feedback');
+            const question = questions[currentQuestionIndex];
+            
+            feedback.classList.remove('hidden', 'bg-green-50', 'bg-red-50');
+            feedback.classList.add(isCorrect ? 'bg-green-50' : 'bg-red-50');
+            
+            feedback.querySelector('p:first-child').textContent = isCorrect ? '✅ Benar!' : '❌ Kurang tepat';
+            feedback.querySelector('p:last-child').textContent = question.explanation;
+            
+            document.getElementById('next-question').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            selectedOption = null;
+            
+            if (currentQuestionIndex < questions.length) {
+                updateQuizDisplay();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('quiz-section').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+            document.getElementById('final-score').textContent = `${score}/${questions.length}`;
+        }
+
+        function restartQuiz() {
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
+            resetQuiz();
+        }
+
+        // Copy HTML Code Function
+        function copyHtmlCode() {
+            // Get the complete HTML of the current page
+            const fullHtml = document.documentElement.outerHTML;
+            
+            // Create a temporary textarea to copy the code
+            const textarea = document.createElement('textarea');
+            textarea.value = fullHtml;
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                
+                // Update button text and style
+                const btn = document.getElementById('copyHtmlBtn');
+                const btnText = document.getElementById('copyBtnText');
+                
+                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                btn.classList.add('bg-green-600', 'hover:bg-green-700');
+                btnText.textContent = '✓ Kode HTML Tersalin!';
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                    btnText.textContent = 'Copy HTML Code';
+                }, 3000);
+                
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                alert('Gagal menyalin kode. Silakan coba lagi.');
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            // App is ready
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96239347227d3f94',t:'MTc1MzAyNjIxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+
+</body></html>
+<!-- partial -->
+  
+</body>
+</html>

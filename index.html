@@ -1,4 +1,6 @@
-<html lang="id"><head>
+<!DOCTYPE html>
+<html lang="id">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moderasi Beragama - Aplikasi Pembelajaran</title>
@@ -178,6 +180,37 @@
             pointer-events: none;
         }
         
+        /* Volume Slider Styling */
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(to right, #10b981 0%, #10b981 100%, #e5e7eb 100%, #e5e7eb 100%);
+            outline: none;
+            border-radius: 15px;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -200,24 +233,110 @@
             100% { transform: translateX(100%); }
         }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.inset-1{inset:0.25rem}.-bottom-2{bottom:-0.5rem}.-left-2{left:-0.5rem}.-left-3{left:-0.75rem}.-right-2{right:-0.5rem}.-right-3{right:-0.75rem}.-top-2{top:-0.5rem}.bottom-1\/4{bottom:25%}.top-1\/4{top:25%}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mt-2{margin-top:0.5rem}.mt-8{margin-top:2rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-12{height:3rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-20{height:5rem}.h-3{height:0.75rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-60{height:15rem}.h-8{height:2rem}.h-full{height:100%}.w-12{width:3rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-20{width:5rem}.w-3{width:0.75rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-60{width:15rem}.w-8{width:2rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-sm{max-width:24rem}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes bounce{0%, 100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(0.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,0.2,1)}}.animate-bounce{animation:bounce 1s infinite}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-t{border-top-width:1px}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.border-green-200{--tw-border-opacity:1;border-color:rgb(187 247 208 / var(--tw-border-opacity, 1))}.border-indigo-100{--tw-border-opacity:1;border-color:rgb(224 231 255 / var(--tw-border-opacity, 1))}.border-yellow-300{--tw-border-opacity:1;border-color:rgb(253 224 71 / var(--tw-border-opacity, 1))}.bg-blue-400{--tw-bg-opacity:1;background-color:rgb(96 165 250 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128 / var(--tw-bg-opacity, 1))}.bg-green-50{--tw-bg-opacity:1;background-color:rgb(240 253 244 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-green-600{--tw-bg-opacity:1;background-color:rgb(22 163 74 / var(--tw-bg-opacity, 1))}.bg-purple-400{--tw-bg-opacity:1;background-color:rgb(192 132 252 / var(--tw-bg-opacity, 1))}.bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255 / var(--tw-bg-opacity, 1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-teal-50{--tw-bg-opacity:1;background-color:rgb(240 253 250 / var(--tw-bg-opacity, 1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-yellow-400{--tw-bg-opacity:1;background-color:rgb(250 204 21 / var(--tw-bg-opacity, 1))}.bg-yellow-500{--tw-bg-opacity:1;background-color:rgb(234 179 8 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-100{--tw-gradient-from:#dcfce7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(220 252 231 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-500{--tw-gradient-from:#22c55e var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 197 94 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-600{--tw-gradient-from:#16a34a var(--tw-gradient-from-position);--tw-gradient-to:rgb(22 163 74 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-indigo-50{--tw-gradient-from:#eef2ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(238 242 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-indigo-500{--tw-gradient-from:#6366f1 var(--tw-gradient-from-position);--tw-gradient-to:rgb(99 102 241 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-500{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-teal-500{--tw-gradient-from:#14b8a6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(20 184 166 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-white\/10{--tw-gradient-to:rgb(255 255 255 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(255 255 255 / 0.1) var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-yellow-50{--tw-gradient-to:rgb(254 252 232 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fefce8 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-blue-100{--tw-gradient-to:#dbeafe var(--tw-gradient-to-position)}.to-blue-600{--tw-gradient-to:#2563eb var(--tw-gradient-to-position)}.to-cyan-600{--tw-gradient-to:#0891b2 var(--tw-gradient-to-position)}.to-emerald-600{--tw-gradient-to:#059669 var(--tw-gradient-to-position)}.to-purple-50{--tw-gradient-to:#faf5ff var(--tw-gradient-to-position)}.to-purple-600{--tw-gradient-to:#9333ea var(--tw-gradient-to-position)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.to-violet-600{--tw-gradient-to:#7c3aed var(--tw-gradient-to-position)}.to-yellow-500{--tw-gradient-to:#eab308 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-1{padding:0.25rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-4{padding-top:1rem}.pt-6{padding-top:1.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.tracking-wide{letter-spacing:0.025em}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-90{opacity:0.9}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.brightness-110{--tw-brightness:brightness(1.1);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-blue-200:hover{--tw-border-opacity:1;border-color:rgb(191 219 254 / var(--tw-border-opacity, 1))}.hover\:border-green-200:hover{--tw-border-opacity:1;border-color:rgb(187 247 208 / var(--tw-border-opacity, 1))}.hover\:border-purple-200:hover{--tw-border-opacity:1;border-color:rgb(233 213 255 / var(--tw-border-opacity, 1))}.hover\:border-teal-200:hover{--tw-border-opacity:1;border-color:rgb(153 246 228 / var(--tw-border-opacity, 1))}.hover\:bg-blue-100:hover{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-300:hover{--tw-bg-opacity:1;background-color:rgb(209 213 219 / var(--tw-bg-opacity, 1))}.hover\:bg-green-100:hover{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.hover\:bg-green-700:hover{--tw-bg-opacity:1;background-color:rgb(21 128 61 / var(--tw-bg-opacity, 1))}.hover\:bg-yellow-600:hover{--tw-bg-opacity:1;background-color:rgb(202 138 4 / var(--tw-bg-opacity, 1))}.hover\:text-blue-700:hover{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.hover\:text-gray-800:hover{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.hover\:text-green-700:hover{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.hover\:text-yellow-200:hover{--tw-text-opacity:1;color:rgb(254 240 138 / var(--tw-text-opacity, 1))}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-teal-100{--tw-bg-opacity:1;background-color:rgb(204 251 241 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:inline{display:inline}.sm\:flex-row{flex-direction:row}.sm\:space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse))}}@media (min-width: 768px){.md\:inset-2{inset:0.5rem}.md\:-bottom-4{bottom:-1rem}.md\:-left-4{left:-1rem}.md\:-left-6{left:-1.5rem}.md\:-right-4{right:-1rem}.md\:-right-6{right:-1.5rem}.md\:-top-4{top:-1rem}.md\:mb-12{margin-bottom:3rem}.md\:mb-3{margin-bottom:0.75rem}.md\:mb-4{margin-bottom:1rem}.md\:mb-6{margin-bottom:1.5rem}.md\:mb-8{margin-bottom:2rem}.md\:mt-12{margin-top:3rem}.md\:flex{display:flex}.md\:h-10{height:2.5rem}.md\:h-16{height:4rem}.md\:h-20{height:5rem}.md\:h-3{height:0.75rem}.md\:h-4{height:1rem}.md\:h-5{height:1.25rem}.md\:h-6{height:1.5rem}.md\:h-8{height:2rem}.md\:h-80{height:20rem}.md\:w-10{width:2.5rem}.md\:w-16{width:4rem}.md\:w-20{width:5rem}.md\:w-24{width:6rem}.md\:w-3{width:0.75rem}.md\:w-4{width:1rem}.md\:w-5{width:1.25rem}.md\:w-6{width:1.5rem}.md\:w-8{width:2rem}.md\:w-80{width:20rem}.md\:max-w-md{max-width:28rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:gap-4{gap:1rem}.md\:gap-8{gap:2rem}.md\:space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.md\:border-2{border-width:2px}.md\:border-4{border-width:4px}.md\:p-2{padding:0.5rem}.md\:p-6{padding:1.5rem}.md\:p-8{padding:2rem}.md\:px-4{padding-left:1rem;padding-right:1rem}.md\:px-6{padding-left:1.5rem;padding-right:1.5rem}.md\:px-8{padding-left:2rem;padding-right:2rem}.md\:py-2{padding-top:0.5rem;padding-bottom:0.5rem}.md\:py-3{padding-top:0.75rem;padding-bottom:0.75rem}.md\:py-6{padding-top:1.5rem;padding-bottom:1.5rem}.md\:py-8{padding-top:2rem;padding-bottom:2rem}.md\:pt-6{padding-top:1.5rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:text-sm{font-size:0.875rem;line-height:1.25rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}.md\:shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}}@media (min-width: 1024px){.lg\:h-24{height:6rem}.lg\:w-96{width:24rem}.lg\:text-2xl{font-size:1.5rem;line-height:2rem}.lg\:text-4xl{font-size:2.25rem;line-height:2.5rem}.lg\:text-lg{font-size:1.125rem;line-height:1.75rem}}</style></head>
+</head>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-gradient-to-r from-green-600 to-yellow-500 text-white shadow-lg">
         <div class="container mx-auto px-4 py-4 md:py-6">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2 md:space-x-3">
-                    <div class="w-20 h-12 md:w-24 md:h-16 lg:w-96 lg:h-24 bg-white rounded-lg flex items-center justify-center p-1 md:p-2 cursor-pointer hover:shadow-lg transition-shadow" onclick="showWelcome()">
-                        <img src="https://raw.githubusercontent.com/mathnology/Moderasi-Beragama/refs/heads/main/logo%20atas%20final.png" alt="Logo Kemenag RI" class="w-full h-full object-contain">
+                    <div class="w-24 h-16 md:w-32 md:h-20 lg:w-40 lg:h-24 bg-white rounded-lg flex items-center justify-center p-2 md:p-3 cursor-pointer hover:shadow-lg transition-shadow" onclick="showWelcome()">
+                        <img src="https://raw.githubusercontent.com/mathnology/Moderasi-Beragama/refs/heads/main/LOGO%20PKDP.png" alt="Logo PKDP" class="w-full h-full object-contain">
                     </div>
                     <h1 class="text-lg md:text-xl lg:text-2xl font-bold cursor-pointer hover:text-yellow-200 transition-all duration-300 transform hover:scale-105 text-shadow-lg" onclick="showWelcome()" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); letter-spacing: 0.5px md:letter-spacing: 1px;">Moderasi Beragama</h1>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
-                    <span class="text-xs md:text-sm opacity-90"> </span>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="https://raw.githubusercontent.com/mathnology/Moderasi-Beragama/main/ToKeBe%20(Toleransi%20dan%20Kerukunan%20dalam%20Keberagaman).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Enhanced Music Control Panel -->
+    <div id="musicControl" class="fixed top-4 right-4 z-50 w-72">
+        <!-- Main Control Panel -->
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 mb-3 transition-all duration-300 hover:shadow-2xl">
+            <!-- Song Title Section -->
+            <div class="text-center mb-6 pb-4 border-b border-gray-100">
+                <div class="flex items-center justify-center mb-2">
+                    <span class="text-lg mr-2">🎵</span>
+                    <h4 class="text-sm font-bold text-gray-800">Now Playing</h4>
+                </div>
+                <p class="text-sm text-gray-700 font-semibold mb-1">ToKeBe</p>
+                <p class="text-xs text-gray-500 leading-tight">(Toleransi dan Kerukunan dalam Keberagaman)</p>
+            </div>
+            
+            <!-- Play/Pause and Repeat Button Section -->
+            <div class="flex justify-center items-center space-x-4 mb-6">
+                <button id="repeatToggle" onclick="toggleRepeat()" class="bg-gray-500 hover:bg-gray-600 text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 flex items-center justify-center" title="Ulangi Lagu">
+                    <span class="text-lg font-bold">🔁</span>
+                </button>
+                
+                <button id="musicToggle" onclick="toggleMusic()" class="bg-green-600 hover:bg-green-700 text-white w-14 h-14 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 flex items-center justify-center">
+                    <span id="musicIcon" class="text-2xl">▶️</span>
+                </button>
+            </div>
+            
+            <!-- Volume Control Section -->
+            <div class="space-y-4">
+                <!-- Volume Header -->
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-700 font-medium">Volume</span>
+                    <span id="volumeDisplay" class="text-sm text-gray-800 font-bold bg-gray-100 px-2 py-1 rounded">100%</span>
+                </div>
+                
+                <!-- Volume Slider with Controls -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="adjustVolume(-0.1)" class="text-gray-600 hover:text-gray-800 transition-colors p-1 hover:bg-gray-100 rounded">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M6.343 6.343A8 8 0 004.222 12a8.001 8.001 0 002.121 5.657m0-11.314A8 8 0 0017.778 12c0 2.21-.895 4.21-2.222 5.657"></path>
+                        </svg>
+                    </button>
+                    <input 
+                        type="range" 
+                        id="volumeSlider" 
+                        min="0" 
+                        max="1" 
+                        step="0.1" 
+                        value="1" 
+                        onchange="setVolume(this.value)"
+                        class="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                    >
+                    <button onclick="adjustVolume(0.1)" class="text-gray-600 hover:text-gray-800 transition-colors p-1 hover:bg-gray-100 rounded">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Quick Volume Buttons -->
+                <div class="grid grid-cols-4 gap-2">
+                    <button onclick="setVolume(0.3)" class="text-xs bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-lg transition-colors font-medium">30%</button>
+                    <button onclick="setVolume(0.5)" class="text-xs bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-lg transition-colors font-medium">50%</button>
+                    <button onclick="setVolume(0.7)" class="text-xs bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-lg transition-colors font-medium">70%</button>
+                    <button onclick="setVolume(1.0)" class="text-xs bg-green-100 hover:bg-green-200 text-green-800 px-3 py-2 rounded-lg transition-colors font-semibold">MAX</button>
+                </div>
+            </div>
+            
+            <!-- Status Indicator -->
+            <div class="text-center mt-6 pt-4 border-t border-gray-100">
+                <span id="musicStatus" class="text-xs text-gray-500 bg-gray-50 px-3 py-2 rounded-full">Klik play untuk memulai musik</span>
+            </div>
+        </div>
+        
+        <!-- Minimize/Expand Button -->
+        <button id="togglePanel" onclick="toggleMusicPanel()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+            <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="19 9l-7 7-7-7"></path>
+            </svg>
+            <span id="toggleText">Minimize</span>
+        </button>
+    </div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
@@ -236,7 +355,9 @@
                         <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
                         
                         <!-- Image with enhanced styling -->
-                        <img src="https://raw.githubusercontent.com/mathnology/Moderasi-Beragama/refs/heads/main/ARISTA%20WIBOWO%20BULET.png" alt="Moderasi Beragama untuk Semua" class="w-full h-full object-cover relative z-10 filter brightness-110 contrast-105">
+                        <img src="https://raw.githubusercontent.com/mathnology/Moderasi-Beragama/refs/heads/main/ARISTA%20WIBOWO%20BULET.png" 
+                             alt="Moderasi Beragama untuk Semua" 
+                             class="w-full h-full object-cover relative z-10 filter brightness-110 contrast-105">
                         
                         <!-- Subtle inner shadow -->
                         <div class="absolute inset-0 rounded-full shadow-inner"></div>
@@ -292,7 +413,7 @@
                 <div class="text-center">
                     <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                         </svg>
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-3">Tips Pembelajaran</h3>
@@ -327,14 +448,14 @@
                         <div class="pulse-ring"></div>
                         <div class="glow-effect"></div>
                         <svg class="floating-icon w-8 h-8 md:w-10 md:h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                         </svg>
                     </div>
                     <div class="text-center">
                         <h3 class="text-lg md:text-2xl font-bold text-gray-800 mb-2 md:mb-3 group-hover:text-blue-600 transition-colors duration-300">Modul Pembelajaran</h3>
-                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Pelajari konsep dasar moderasi beragama dan nilai-nilai toleransi melalui 5 bab pembelajaran yang komprehensif</p>
+                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Pelajari konsep dasar moderasi beragama dan nilai-nilai toleransi melalui 6 bab pembelajaran yang komprehensif</p>
                         <div class="inline-flex items-center bg-blue-50 text-blue-600 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium group-hover:bg-blue-100 transition-colors duration-300">
-                            <span>5 Bab Tersedia</span>
+                            <span>6 Bab Tersedia</span>
                             <svg class="w-3 h-3 md:w-4 md:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
@@ -348,7 +469,7 @@
                         <div class="pulse-ring"></div>
                         <div class="glow-effect"></div>
                         <svg class="floating-icon w-8 h-8 md:w-10 md:h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.5s;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
                     <div class="text-center">
@@ -369,7 +490,7 @@
                         <div class="pulse-ring"></div>
                         <div class="glow-effect"></div>
                         <svg class="floating-icon w-8 h-8 md:w-10 md:h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 1s;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                     </div>
                     <div class="text-center">
@@ -390,7 +511,7 @@
                         <div class="pulse-ring"></div>
                         <div class="glow-effect"></div>
                         <svg class="floating-icon w-8 h-8 md:w-10 md:h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 1.5s;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                         </svg>
                     </div>
                     <div class="text-center">
@@ -417,7 +538,7 @@
                         </svg>
                         Kembali
                     </button>
-                    <div class="text-sm text-gray-500">Bab <span id="module-number">1</span> dari 5</div>
+                    <div class="text-sm text-gray-500">Bab <span id="module-number">1</span> dari 6</div>
                 </div>
 
                 <div id="module-content-body">
@@ -604,6 +725,8 @@
             </div>
             
 
+        </div>
+    </footer>
 
     <script>
         let currentQuestionIndex = 0;
@@ -716,6 +839,118 @@
                                 <h4 class="font-semibold text-red-800 mb-2">🌍 Kemajuan Peradaban</h4>
                                 <p class="text-red-700 text-sm">Mendorong kemajuan dalam suasana damai dan toleran</p>
                             </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "9 Kata Kunci Moderasi Beragama",
+                content: `
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">9 Kata Kunci Moderasi Beragama</h2>
+                    
+                    <div class="prose max-w-none">
+                        <!-- 9 Keywords Illustration -->
+                        <div class="mb-6 text-center">
+                            <img src="https://raw.githubusercontent.com/mathnology/Moderasi-Beragama/refs/heads/main/9%20KATA%20KUNCI%20MODERASI%20BERAGAMA.gif" 
+                                 alt="9 Kata Kunci Moderasi Beragama" 
+                                 class="mx-auto w-full max-w-2xl h-auto mb-4 object-contain rounded-lg shadow-md">
+                        </div>
+
+                        <p class="text-lg text-gray-700 mb-6">
+                            Moderasi beragama memiliki 9 kata kunci yang menjadi fondasi dalam membangun kehidupan beragama yang harmonis dan damai. Setiap kata kunci memiliki makna dan implementasi yang penting dalam kehidupan bermasyarakat.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                            <!-- 1. Kemanusiaan -->
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">👥</span>
+                                    <h4 class="font-bold text-blue-800">1. Kemanusiaan</h4>
+                                </div>
+                                <p class="text-blue-700 text-sm">Mengutamakan nilai-nilai kemanusiaan universal yang melampaui batas-batas agama, suku, dan golongan dalam setiap tindakan dan keputusan.</p>
+                            </div>
+
+                            <!-- 2. Kemaslahatan Umum -->
+                            <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg border border-green-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">🌍</span>
+                                    <h4 class="font-bold text-green-800">2. Kemaslahatan Umum</h4>
+                                </div>
+                                <p class="text-green-700 text-sm">Mengutamakan kepentingan bersama dan kesejahteraan masyarakat luas di atas kepentingan kelompok atau golongan tertentu.</p>
+                            </div>
+
+                            <!-- 3. Adil -->
+                            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-4 rounded-lg border border-yellow-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">⚖️</span>
+                                    <h4 class="font-bold text-yellow-800">3. Adil</h4>
+                                </div>
+                                <p class="text-yellow-700 text-sm">Berlaku adil dan tidak diskriminatif terhadap semua pihak tanpa memandang latar belakang agama, suku, atau status sosial.</p>
+                            </div>
+
+                            <!-- 4. Keberimbangan -->
+                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg border border-purple-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">⚖️</span>
+                                    <h4 class="font-bold text-purple-800">4. Keberimbangan</h4>
+                                </div>
+                                <p class="text-purple-700 text-sm">Menjaga keseimbangan antara hak dan kewajiban, antara kepentingan dunia dan akhirat, serta antara individu dan masyarakat.</p>
+                            </div>
+
+                            <!-- 5. Taat -->
+                            <div class="bg-gradient-to-br from-red-50 to-red-100 p-4 rounded-lg border border-red-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">🙏</span>
+                                    <h4 class="font-bold text-red-800">5. Taat</h4>
+                                </div>
+                                <p class="text-red-700 text-sm">Menjalankan ajaran agama dengan konsisten dan komitmen tinggi, serta taat kepada aturan negara dan norma sosial.</p>
+                            </div>
+
+                            <!-- 6. Komitmen Kebangsaan -->
+                            <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-4 rounded-lg border border-indigo-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">🇮🇩</span>
+                                    <h4 class="font-bold text-indigo-800">6. Komitmen Kebangsaan</h4>
+                                </div>
+                                <p class="text-indigo-700 text-sm">Memiliki loyalitas dan dedikasi tinggi terhadap bangsa dan negara Indonesia, serta berpartisipasi aktif dalam pembangunan.</p>
+                            </div>
+
+                            <!-- 7. Toleransi -->
+                            <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-4 rounded-lg border border-pink-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">🤝</span>
+                                    <h4 class="font-bold text-pink-800">7. Toleransi</h4>
+                                </div>
+                                <p class="text-pink-700 text-sm">Menghormati dan menghargai perbedaan keyakinan, pendapat, dan cara hidup orang lain dalam masyarakat yang beragam.</p>
+                            </div>
+
+                            <!-- 8. Anti Kekerasan -->
+                            <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-4 rounded-lg border border-teal-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">☮️</span>
+                                    <h4 class="font-bold text-teal-800">8. Anti Kekerasan</h4>
+                                </div>
+                                <p class="text-teal-700 text-sm">Menolak segala bentuk kekerasan dan radikalisme, serta mengutamakan dialog dan pendekatan damai dalam menyelesaikan konflik.</p>
+                            </div>
+
+                            <!-- 9. Penghormatan terhadap Tradisi -->
+                            <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg border border-orange-200">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-2xl mr-3">🏛️</span>
+                                    <h4 class="font-bold text-orange-800">9. Penghormatan terhadap Tradisi</h4>
+                                </div>
+                                <p class="text-orange-700 text-sm">Menghargai dan melestarikan tradisi lokal yang tidak bertentangan dengan ajaran agama dan nilai-nilai universal.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 p-6 rounded-lg">
+                            <h4 class="font-semibold text-indigo-800 mb-3">💡 Implementasi dalam Kehidupan Sehari-hari:</h4>
+                            <ul class="list-disc list-inside text-indigo-700 space-y-2">
+                                <li>Menerapkan 9 kata kunci ini secara bersamaan dan seimbang</li>
+                                <li>Menjadikan nilai-nilai ini sebagai pedoman dalam berinteraksi sosial</li>
+                                <li>Mengintegrasikan dalam pendidikan, pekerjaan, dan kehidupan bermasyarakat</li>
+                                <li>Menjadi teladan bagi generasi muda dalam membangun bangsa yang harmonis</li>
+                            </ul>
                         </div>
                     </div>
                 `
@@ -1318,48 +1553,200 @@
             resetQuiz();
         }
 
-        // Copy HTML Code Function
-        function copyHtmlCode() {
-            // Get the complete HTML of the current page
-            const fullHtml = document.documentElement.outerHTML;
+
+
+        // Music Control Functions
+        let isPlaying = false;
+        let musicStarted = false;
+        let isPanelMinimized = false;
+        let isRepeatOn = false;
+
+        function toggleMusic() {
+            const audio = document.getElementById('backgroundMusic');
+            const musicIcon = document.getElementById('musicIcon');
+            const musicButton = document.getElementById('musicToggle');
+            const musicStatus = document.getElementById('musicStatus');
             
-            // Create a temporary textarea to copy the code
-            const textarea = document.createElement('textarea');
-            textarea.value = fullHtml;
-            document.body.appendChild(textarea);
-            textarea.select();
-            
-            try {
-                document.execCommand('copy');
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                musicButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                musicButton.classList.add('bg-green-600', 'hover:bg-green-700');
+                // Change to play icon
+                musicIcon.textContent = '▶️';
+                musicStatus.textContent = 'Musik dihentikan - Klik play untuk melanjutkan';
+                musicStatus.className = 'text-xs text-red-500';
+            } else {
+                // Get current volume from slider
+                const volumeSlider = document.getElementById('volumeSlider');
+                audio.volume = volumeSlider.value;
                 
-                // Update button text and style
-                const btn = document.getElementById('copyHtmlBtn');
-                const btnText = document.getElementById('copyBtnText');
-                
-                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                btn.classList.add('bg-green-600', 'hover:bg-green-700');
-                btnText.textContent = '✓ Kode HTML Tersalin!';
-                
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    btn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                    btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-                    btnText.textContent = 'Copy HTML Code';
-                }, 3000);
-                
-            } catch (err) {
-                console.error('Failed to copy: ', err);
-                alert('Gagal menyalin kode. Silakan coba lagi.');
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicStarted = true;
+                    musicButton.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    musicButton.classList.add('bg-red-600', 'hover:bg-red-700');
+                    // Change to pause icon
+                    musicIcon.textContent = '⏸️';
+                    musicStatus.textContent = 'Musik sedang diputar ♪';
+                    musicStatus.className = 'text-xs text-green-600 font-medium';
+                }).catch(e => {
+                    console.log('Audio play failed:', e);
+                    musicStatus.textContent = 'Musik tidak dapat diputar. Coba lagi.';
+                    musicStatus.className = 'text-xs text-red-500';
+                });
             }
+        }
+
+        function setVolume(value) {
+            const audio = document.getElementById('backgroundMusic');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const volumeDisplay = document.getElementById('volumeDisplay');
             
-            document.body.removeChild(textarea);
+            audio.volume = value;
+            volumeSlider.value = value;
+            volumeDisplay.textContent = Math.round(value * 100) + '%';
+            
+            // Update slider background
+            const percentage = value * 100;
+            volumeSlider.style.background = `linear-gradient(to right, #10b981 0%, #10b981 ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`;
+            
+            // Show volume status
+            const musicStatus = document.getElementById('musicStatus');
+            if (isPlaying) {
+                musicStatus.textContent = `Volume: ${Math.round(value * 100)}% ♪`;
+                musicStatus.className = 'text-xs text-blue-600 font-medium';
+                
+                // Reset status after 2 seconds
+                setTimeout(() => {
+                    if (isPlaying) {
+                        musicStatus.textContent = 'Musik sedang diputar ♪';
+                        musicStatus.className = 'text-xs text-green-600 font-medium';
+                    }
+                }, 2000);
+            }
+        }
+
+        function adjustVolume(change) {
+            const volumeSlider = document.getElementById('volumeSlider');
+            const currentVolume = parseFloat(volumeSlider.value);
+            const newVolume = Math.max(0, Math.min(1, currentVolume + change));
+            setVolume(newVolume);
+        }
+
+        function toggleRepeat() {
+            const audio = document.getElementById('backgroundMusic');
+            const repeatButton = document.getElementById('repeatToggle');
+            const musicStatus = document.getElementById('musicStatus');
+            
+            isRepeatOn = !isRepeatOn;
+            
+            if (isRepeatOn) {
+                audio.loop = true;
+                repeatButton.classList.remove('bg-gray-500', 'hover:bg-gray-600');
+                repeatButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                repeatButton.title = 'Matikan Ulangi Lagu';
+                repeatButton.querySelector('span').textContent = '🔂';
+                
+                // Show status
+                musicStatus.textContent = 'Mode ulangi lagu diaktifkan 🔄';
+                musicStatus.className = 'text-xs text-blue-600 font-medium';
+                
+                // Reset status after 2 seconds
+                setTimeout(() => {
+                    if (isPlaying) {
+                        musicStatus.textContent = 'Musik sedang diputar ♪';
+                        musicStatus.className = 'text-xs text-green-600 font-medium';
+                    }
+                }, 2000);
+            } else {
+                audio.loop = false;
+                repeatButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                repeatButton.classList.add('bg-gray-500', 'hover:bg-gray-600');
+                repeatButton.title = 'Ulangi Lagu';
+                repeatButton.querySelector('span').textContent = '🔁';
+                
+                // Show status
+                musicStatus.textContent = 'Mode ulangi lagu dimatikan';
+                musicStatus.className = 'text-xs text-gray-500';
+                
+                // Reset status after 2 seconds
+                setTimeout(() => {
+                    if (isPlaying) {
+                        musicStatus.textContent = 'Musik sedang diputar ♪';
+                        musicStatus.className = 'text-xs text-green-600 font-medium';
+                    }
+                }, 2000);
+            }
+        }
+
+        function toggleMusicPanel() {
+            const panel = document.querySelector('#musicControl > div');
+            const toggleText = document.getElementById('toggleText');
+            const toggleIcon = document.querySelector('#togglePanel svg');
+            
+            if (isPanelMinimized) {
+                panel.classList.remove('hidden');
+                toggleText.textContent = 'Minimize';
+                toggleIcon.style.transform = 'rotate(0deg)';
+                isPanelMinimized = false;
+            } else {
+                panel.classList.add('hidden');
+                toggleText.textContent = 'Kontrol Musik';
+                toggleIcon.style.transform = 'rotate(180deg)';
+                isPanelMinimized = true;
+            }
+        }
+
+        function startBackgroundMusic() {
+            if (!musicStarted) {
+                const audio = document.getElementById('backgroundMusic');
+                audio.volume = 1.0; // Set volume to maximum by default
+                
+                // Try to play automatically
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicStarted = true;
+                    const musicIcon = document.getElementById('musicIcon');
+                    const musicStatus = document.getElementById('musicStatus');
+                    musicIcon.textContent = '⏸️';
+                    musicStatus.textContent = 'Musik sedang diputar ♪';
+                    musicStatus.className = 'text-xs text-green-600 font-medium';
+                    
+                    // Update button color
+                    const musicButton = document.getElementById('musicToggle');
+                    musicButton.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    musicButton.classList.add('bg-red-600', 'hover:bg-red-700');
+                }).catch(e => {
+                    console.log('Autoplay prevented by browser:', e);
+                    // Show notification that user can click to play music
+                    showMusicNotification();
+                });
+                
+                musicStarted = true;
+            }
+        }
+
+        function showMusicNotification() {
+            // Create a temporary notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-40 text-sm';
+            notification.innerHTML = '🎵 Klik tombol musik untuk memutar lagu ToKeBe';
+            document.body.appendChild(notification);
+            
+            // Remove notification after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 5000);
         }
 
         // Initialize app
         document.addEventListener('DOMContentLoaded', function() {
-            // App is ready
+            // Start background music when page loads
+            setTimeout(startBackgroundMusic, 1000); // Delay 1 second to ensure page is fully loaded
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9625a197929e7ae1',t:'MTc1MzA0Nzc3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
-
-</body></html>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96661b37e71efd89',t:'MTc1MzcyMzg0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

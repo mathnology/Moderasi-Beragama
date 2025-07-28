@@ -93,7 +93,15 @@
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
         }
         
+        .card-hover:nth-child(3):hover .glow-effect {
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+        }
+        
         .card-hover:nth-child(4):hover .glow-effect {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        }
+        
+        .card-hover:nth-child(5):hover .glow-effect {
             box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
         }
         
@@ -418,22 +426,26 @@
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-3">Tips Pembelajaran</h3>
                     <p class="text-sm md:text-base text-gray-600 mb-6 max-w-2xl mx-auto px-2">
-                        Untuk hasil pembelajaran yang optimal, disarankan untuk mengikuti urutan: Modul Pembelajaran → Kuis Interaktif → Studi Kasus → Referensi
+                        Untuk hasil pembelajaran yang optimal, disarankan untuk mengikuti urutan: Modul Pembelajaran → Kuis Interaktif → Game Edukatif → Studi Kasus → Referensi
                     </p>
-                    <div class="flex flex-wrap justify-center gap-2 md:gap-4">
-                        <div class="flex items-center bg-white px-3 md:px-4 py-2 rounded-full shadow-sm">
+                    <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+                        <div class="flex items-center bg-white px-2 md:px-3 py-1.5 md:py-2 rounded-full shadow-sm">
                             <span class="w-2 h-2 md:w-3 md:h-3 bg-blue-500 rounded-full mr-2"></span>
                             <span class="text-xs md:text-sm text-gray-700">Mulai dari Modul</span>
                         </div>
-                        <div class="flex items-center bg-white px-3 md:px-4 py-2 rounded-full shadow-sm">
+                        <div class="flex items-center bg-white px-2 md:px-3 py-1.5 md:py-2 rounded-full shadow-sm">
                             <span class="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full mr-2"></span>
                             <span class="text-xs md:text-sm text-gray-700">Uji dengan Kuis</span>
                         </div>
-                        <div class="flex items-center bg-white px-3 md:px-4 py-2 rounded-full shadow-sm">
+                        <div class="flex items-center bg-white px-2 md:px-3 py-1.5 md:py-2 rounded-full shadow-sm">
+                            <span class="w-2 h-2 md:w-3 md:h-3 bg-orange-500 rounded-full mr-2"></span>
+                            <span class="text-xs md:text-sm text-gray-700">Main Game</span>
+                        </div>
+                        <div class="flex items-center bg-white px-2 md:px-3 py-1.5 md:py-2 rounded-full shadow-sm">
                             <span class="w-2 h-2 md:w-3 md:h-3 bg-purple-500 rounded-full mr-2"></span>
                             <span class="text-xs md:text-sm text-gray-700">Analisis Kasus</span>
                         </div>
-                        <div class="flex items-center bg-white px-3 md:px-4 py-2 rounded-full shadow-sm">
+                        <div class="flex items-center bg-white px-2 md:px-3 py-1.5 md:py-2 rounded-full shadow-sm">
                             <span class="w-2 h-2 md:w-3 md:h-3 bg-teal-500 rounded-full mr-2"></span>
                             <span class="text-xs md:text-sm text-gray-700">Pelajari Referensi</span>
                         </div>
@@ -441,22 +453,22 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto mb-8">
                 <!-- Modul Pembelajaran -->
-                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-8 cursor-pointer group border border-gray-100 hover:border-blue-200" onclick="showModule('teori')">
-                    <div class="icon-container w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl flex items-center justify-center mb-4 md:mb-6 mx-auto relative">
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-6 cursor-pointer group border border-gray-100 hover:border-blue-200" onclick="showModule('teori')">
+                    <div class="icon-container w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-3 md:mb-4 mx-auto relative">
                         <div class="pulse-ring"></div>
                         <div class="glow-effect"></div>
-                        <svg class="floating-icon w-8 h-8 md:w-10 md:h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="floating-icon w-7 h-7 md:w-8 md:h-8 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                         </svg>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-lg md:text-2xl font-bold text-gray-800 mb-2 md:mb-3 group-hover:text-blue-600 transition-colors duration-300">Modul Pembelajaran</h3>
-                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Pelajari konsep dasar moderasi beragama dan nilai-nilai toleransi melalui 6 bab pembelajaran yang komprehensif</p>
-                        <div class="inline-flex items-center bg-blue-50 text-blue-600 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium group-hover:bg-blue-100 transition-colors duration-300">
-                            <span>6 Bab Tersedia</span>
-                            <svg class="w-3 h-3 md:w-4 md:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-base md:text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">Modul Pembelajaran</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Pelajari konsep dasar moderasi beragama melalui 6 bab pembelajaran komprehensif</p>
+                        <div class="inline-flex items-center bg-blue-50 text-blue-600 px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs font-medium group-hover:bg-blue-100 transition-colors duration-300">
+                            <span>6 Bab</span>
+                            <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
@@ -464,20 +476,41 @@
                 </div>
 
                 <!-- Kuis Interaktif -->
-                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-8 cursor-pointer group border border-gray-100 hover:border-green-200" onclick="showQuiz()">
-                    <div class="icon-container w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center mb-4 md:mb-6 mx-auto relative">
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-6 cursor-pointer group border border-gray-100 hover:border-green-200" onclick="showQuiz()">
+                    <div class="icon-container w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-3 md:mb-4 mx-auto relative">
                         <div class="pulse-ring"></div>
                         <div class="glow-effect"></div>
-                        <svg class="floating-icon w-8 h-8 md:w-10 md:h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.5s;">
+                        <svg class="floating-icon w-7 h-7 md:w-8 md:h-8 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.5s;">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-lg md:text-2xl font-bold text-gray-800 mb-2 md:mb-3 group-hover:text-green-600 transition-colors duration-300">Kuis Interaktif</h3>
-                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Uji pemahaman Anda dengan kuis yang menarik dan edukatif untuk mengukur penguasaan materi</p>
-                        <div class="inline-flex items-center bg-green-50 text-green-600 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium group-hover:bg-green-100 transition-colors duration-300">
-                            <span>5 Pertanyaan</span>
-                            <svg class="w-3 h-3 md:w-4 md:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-base md:text-lg font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors duration-300">Kuis Interaktif</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Uji pemahaman dengan kuis menarik dan edukatif</p>
+                        <div class="inline-flex items-center bg-green-50 text-green-600 px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs font-medium group-hover:bg-green-100 transition-colors duration-300">
+                            <span>5 Soal</span>
+                            <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Edukatif -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-6 cursor-pointer group border border-gray-100 hover:border-orange-200" onclick="window.location.href='https://mathnology.github.io/GAME-MODERASI-BERAGAMA/'">
+                    <div class="icon-container w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-3 md:mb-4 mx-auto relative">
+                        <div class="pulse-ring"></div>
+                        <div class="glow-effect"></div>
+                        <svg class="floating-icon w-7 h-7 md:w-8 md:h-8 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 0.75s;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.01M15 10h1.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-base md:text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors duration-300">Game Edukatif</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Belajar sambil bermain dengan game interaktif yang menyenangkan</p>
+                        <div class="inline-flex items-center bg-orange-50 text-orange-600 px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs font-medium group-hover:bg-orange-100 transition-colors duration-300">
+                            <span>Main Sekarang</span>
+                            <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
@@ -485,20 +518,20 @@
                 </div>
 
                 <!-- Studi Kasus -->
-                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-8 cursor-pointer group border border-gray-100 hover:border-purple-200" onclick="showCaseStudy()">
-                    <div class="icon-container w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-3xl flex items-center justify-center mb-4 md:mb-6 mx-auto relative">
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-6 cursor-pointer group border border-gray-100 hover:border-purple-200" onclick="showCaseStudy()">
+                    <div class="icon-container w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center mb-3 md:mb-4 mx-auto relative">
                         <div class="pulse-ring"></div>
                         <div class="glow-effect"></div>
-                        <svg class="floating-icon w-8 h-8 md:w-10 md:h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 1s;">
+                        <svg class="floating-icon w-7 h-7 md:w-8 md:h-8 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 1s;">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-lg md:text-2xl font-bold text-gray-800 mb-2 md:mb-3 group-hover:text-purple-600 transition-colors duration-300">Studi Kasus</h3>
-                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Analisis kasus nyata penerapan moderasi beragama di masyarakat Indonesia</p>
-                        <div class="inline-flex items-center bg-purple-50 text-purple-600 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium group-hover:bg-purple-100 transition-colors duration-300">
-                            <span>3 Kasus Tersedia</span>
-                            <svg class="w-3 h-3 md:w-4 md:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-base md:text-lg font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300">Studi Kasus</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Analisis kasus nyata penerapan moderasi beragama di Indonesia</p>
+                        <div class="inline-flex items-center bg-purple-50 text-purple-600 px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs font-medium group-hover:bg-purple-100 transition-colors duration-300">
+                            <span>3 Kasus</span>
+                            <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
@@ -506,20 +539,20 @@
                 </div>
 
                 <!-- Referensi -->
-                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-8 cursor-pointer group border border-gray-100 hover:border-teal-200" onclick="showReferences()">
-                    <div class="icon-container w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-3xl flex items-center justify-center mb-4 md:mb-6 mx-auto relative">
+                <div class="card-hover bg-white rounded-2xl shadow-lg p-4 md:p-6 cursor-pointer group border border-gray-100 hover:border-teal-200" onclick="showReferences()">
+                    <div class="icon-container w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-3 md:mb-4 mx-auto relative">
                         <div class="pulse-ring"></div>
                         <div class="glow-effect"></div>
-                        <svg class="floating-icon w-8 h-8 md:w-10 md:h-10 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 1.5s;">
+                        <svg class="floating-icon w-7 h-7 md:w-8 md:h-8 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-delay: 1.5s;">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                         </svg>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-lg md:text-2xl font-bold text-gray-800 mb-2 md:mb-3 group-hover:text-teal-600 transition-colors duration-300">Referensi</h3>
-                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Daftar pustaka dan sumber referensi terpercaya tentang moderasi beragama</p>
-                        <div class="inline-flex items-center bg-teal-50 text-teal-600 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium group-hover:bg-teal-100 transition-colors duration-300">
-                            <span>25+ Referensi</span>
-                            <svg class="w-3 h-3 md:w-4 md:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-base md:text-lg font-bold text-gray-800 mb-2 group-hover:text-teal-600 transition-colors duration-300">Referensi</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">Daftar pustaka dan sumber referensi terpercaya</p>
+                        <div class="inline-flex items-center bg-teal-50 text-teal-600 px-2 md:px-3 py-1 md:py-1.5 rounded-full text-xs font-medium group-hover:bg-teal-100 transition-colors duration-300">
+                            <span>25+ Ref</span>
+                            <svg class="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
@@ -1748,5 +1781,5 @@
             setTimeout(startBackgroundMusic, 1000); // Delay 1 second to ensure page is fully loaded
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96661b37e71efd89',t:'MTc1MzcyMzg0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'966793b4b54cfddf',t:'MTc1MzczOTI2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
